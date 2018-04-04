@@ -1,0 +1,33 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMovement.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Extra\PlayerNetworkCam.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Lobby\RoomLayoutGroup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="15" Column="42" />
+      <File FileName="Assets\Scripts\SelectScene\SelectCanvasScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Networks\LobbyNetwork.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CurrentRoom\PlayerLayoutGroup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerManagement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Countdown.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainCanvasManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Story\StoryButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Extra\LeaveCurrentMatch.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CreateRoom\CreateRoom.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MotherScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Lobby\LobbyCanvas.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CurrentRoom\CurrentRoomCanvas.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Lobby\OptionCanvas.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Networks\PlayerNetwork.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CurrentRoom\PlayerListing.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SelectScene\PlayerSoulChooseScript.cs" Line="17" Column="24" />
+      <File FileName="Assets\Scripts\Extra\CanvasGameButton.cs" Line="107" Column="28" />
+      <File FileName="Assets\Scripts\GIF\StartAnimation.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Lobby\RoomListing.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
