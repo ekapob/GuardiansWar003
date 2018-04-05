@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour {
 	void Die()
 	{
 		PlayerStats.Money += worth;
-		Destroy (gameObject);
+		PhotonView.Destroy(gameObject);
 	}
 
 

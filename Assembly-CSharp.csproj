@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{78FB6476-99A7-454A-1E01-D1DA5817E34A}</ProjectGuid>
+    <ProjectGuid>{E14136EF-B385-668B-2365-279BDD9F743C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -208,6 +208,7 @@
      <Compile Include="Assets\Scripts\Extra\PlayerNetworkCam.cs" />
      <Compile Include="Assets\Scripts\GIF\StartAnimation.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\BulletBombEffect.cs" />
      <Compile Include="Assets\Scripts\Gameplay\CameraController.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Canvas\CanvasGameplayControl.cs" />
      <Compile Include="Assets\Scripts\Gameplay\CanvasNode.cs" />
@@ -641,18 +642,18 @@
  <HintPath>D:/Program Files (x86)/Unity 5.5.2/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar002/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar003/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="UTNotifications">
- <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar002/Assets/Plugins/UTNotifications.dll</HintPath>
+ <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar003/Assets/Plugins/UTNotifications.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar002/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar003/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{90EDA55D-AFB1-82F7-7F18-8763E44F7C50}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{53CC8A59-BB3C-FF41-F4D6-4438C1BD0E53}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

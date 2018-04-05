@@ -166,14 +166,14 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 
 	[PunRPC]
 	private void RPC_OnClickMode1(){
-		CanvasGameButton.Instance.modePrintTxt.text = "Mode : KilL'a BosSSS";
+		CanvasGameButton.Instance.modePrintTxt.text = "Mode : Ah Base is on FIRE";
 		mode = 1;
 		CanvasGameButton.Instance.timer = 3f;
 	}
 
 	[PunRPC]
 	private void RPC_OnClickMode2(){
-		CanvasGameButton.Instance.modePrintTxt.text = "Mode : Ah Base is on FIRE";
+		CanvasGameButton.Instance.modePrintTxt.text = "Mode : KilL'a BosSSS";
 		mode = 2;
 		CanvasGameButton.Instance.timer = 3f;
 	}

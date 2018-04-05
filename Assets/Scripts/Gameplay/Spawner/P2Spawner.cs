@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class P2Spawner : MonoBehaviour {
 
@@ -21,14 +22,16 @@ public class P2Spawner : MonoBehaviour {
 
 	void Start()
 	{
-		Instance = this;
+		if(PhotonNetwork.isMasterClient)
+			Instance = this;
 	}
 
 	void Update()
 	{
 		if (countdown <= 0f) 
 		{
-			StartCoroutine (SpawnWave ());
+			if(PhotonNetwork.isMasterClient)
+				StartCoroutine (SpawnWave ());
 			countdown = timeBetweenWaves;
 		}
 
@@ -56,16 +59,19 @@ public class P2Spawner : MonoBehaviour {
 
 	void SpawnEnemy1()
 	{
-		Instantiate (enemy1Prefab, spawnPoint.position, spawnPoint.rotation);
+		PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P2Enemies", enemy1Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+		//Instantiate (enemy1Prefab, spawnPoint.position, spawnPoint.rotation);
 	}
 
 	void SpawnEnemy2()
 	{
-		Instantiate (enemy2Prefab, spawnPoint.position, spawnPoint.rotation);
+		PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P2Enemies", enemy2Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+		//Instantiate (enemy2Prefab, spawnPoint.position, spawnPoint.rotation);
 	}
 
 	void SpawnEnemy3()
 	{
-		Instantiate (enemy3Prefab, spawnPoint.position, spawnPoint.rotation);
+		PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P2Enemies", enemy3Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+		//Instantiate (enemy3Prefab, spawnPoint.position, spawnPoint.rotation);
 	}
 }

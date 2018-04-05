@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using System.IO;
 
-public class Bullet : MonoBehaviour {
+public class Bullet : Photon.MonoBehaviour {
 
 	private Transform target;
+	public bool UseTransformView = true;
+	private Vector3 TargetPosition;
+	private Quaternion TargetRotation;
 
 	public int damage = 50;
 
@@ -17,32 +21,52 @@ public class Bullet : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (photonView.isMine) {
+			if (target == null) {
+				Destroy (gameObject);
+				return;
+			}
 
-		if (target == null)
-		{
-			Destroy(gameObject);
-			return;
+			Vector3 dir = target.position - transform.position;
+			float distanceThisFrame = speed * Time.deltaTime;
+
+			if (dir.magnitude <= distanceThisFrame) {
+				HitTarget ();
+				return;
+			}
+
+			transform.Translate (dir.normalized * distanceThisFrame, Space.World);
+			transform.LookAt (target);
+		} else {
+
+			SmoothMove ();
 		}
-
-		Vector3 dir = target.position - transform.position;
-		float distanceThisFrame = speed * Time.deltaTime;
-
-		if (dir.magnitude <= distanceThisFrame)
-		{
-			HitTarget();
-			return;
-		}
-
-		transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-		transform.LookAt (target);
 
 
 	}
 
+	private void SmoothMove(){
+		if (UseTransformView) {
+			return;
+		}
+		transform.position = Vector3.Lerp (transform.position, TargetPosition, 0.25f);
+		transform.rotation = Quaternion.RotateTowards (transform.rotation, TargetRotation, 500 * Time.deltaTime);
+	}
+	private void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
+		if (UseTransformView) {
+			return;
+		}
+		if (stream.isWriting) {
+			stream.SendNext (transform.position);
+			stream.SendNext (transform.rotation);
+		} else {
+			TargetPosition = (Vector3)stream.ReceiveNext ();
+			TargetRotation = (Quaternion)stream.ReceiveNext ();
+		}
+	}
 	void HitTarget ()
 	{
-		GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-		Destroy(effectIns, 2f);
+		GameObject effectIns = PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit", impactEffect.name), transform.position, transform.rotation, 0);
 
 		if (explosionRadius > 0f) 
 		{
@@ -53,8 +77,10 @@ public class Bullet : MonoBehaviour {
 			Damage (target);
 		}
 
-		Destroy(gameObject);
+		PhotonNetwork.Destroy (gameObject);
 	}
+
+		
 
 	void Explode()
 	{
