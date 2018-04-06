@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
-public class P1EnemyMovement : MonoBehaviour {
+public class P1EnemyMovement : Photon.MonoBehaviour {
 
 	private Transform target;
 	private int wavepointIndex = 0;
 	public bool UseTransformView = true;
 	private Vector3 TargetPosition;
 	private Quaternion TargetRotation;
+	private PhotonView PhotonView;
 
 	private Enemy enemy;
 
 	void Start()
 	{
 		enemy = GetComponent<Enemy> ();
-
+		PhotonView = GetComponent<PhotonView> ();
 		target = P1Waypoints.points[0];
 	}
 	void Update()

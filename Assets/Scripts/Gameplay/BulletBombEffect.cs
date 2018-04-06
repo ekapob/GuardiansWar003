@@ -6,7 +6,7 @@ public class BulletBombEffect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Invoke ("DestroyEffect", 2f);
+		Invoke ("DestroyEffect", 1f);
 	}
 	
 	// Update is called once per frame

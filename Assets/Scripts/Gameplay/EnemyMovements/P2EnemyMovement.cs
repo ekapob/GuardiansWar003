@@ -10,13 +10,14 @@ public class P2EnemyMovement : MonoBehaviour {
 	public bool UseTransformView = true;
 	private Vector3 TargetPosition;
 	private Quaternion TargetRotation;
+	private PhotonView PhotonView;
 
 	private Enemy enemy;
 
 	void Start()
 	{
 		enemy = GetComponent<Enemy> ();
-
+		PhotonView = GetComponent<PhotonView> ();
 		target = P2Waypoints.points[0];
 	}
 	void Update()

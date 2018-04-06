@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : Photon.MonoBehaviour {
 
 	Manager manager;
 
 	//-----
 
 	private Transform target;
+	private PhotonView PhotonView;
 
 	private float range = 2.5f;
 
@@ -38,6 +39,7 @@ public class Enemy : MonoBehaviour {
 	{
 		manager = Manager.instance;
 		currentHealth = startHealth;
+		PhotonView = GetComponent<PhotonView> ();
 
 		speed = startSpeed;
 
@@ -101,10 +103,7 @@ public class Enemy : MonoBehaviour {
 
 	public void TakeDamage(float amount)
 	{
-		currentHealth -= amount;
-		healthBar.fillAmount = currentHealth/startHealth;
-		if (currentHealth <= 0)
-			Die ();
+		photonView.RPC ("RPC_Health", PhotonTargets.All,amount); 
 	}
 
 	public void Slow (float pct)
@@ -112,11 +111,20 @@ public class Enemy : MonoBehaviour {
 		speed = startSpeed * (1f - pct);
 	}
 
-	void Die()
+	[PunRPC]
+	private void RPC_Die()
 	{
 		PlayerStats.Money += worth;
 		PhotonView.Destroy(gameObject);
 	}
 
+	[PunRPC]
+	private void RPC_Health(float dam){
+		currentHealth -= dam;
+		healthBar.fillAmount = currentHealth/startHealth;
+		if (currentHealth <= 0) {
+			photonView.RPC ("RPC_Die", PhotonTargets.All); 
+		}
+	}
 
 }
