@@ -34,6 +34,7 @@ public class Enemy : Photon.MonoBehaviour {
 	public int worth = 50;
 
 	public Image healthBar;
+	public Animator enemyAnim;
 
 	void Start()
 	{
@@ -42,7 +43,6 @@ public class Enemy : Photon.MonoBehaviour {
 		PhotonView = GetComponent<PhotonView> ();
 
 		speed = startSpeed;
-
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
 
@@ -115,6 +115,7 @@ public class Enemy : Photon.MonoBehaviour {
 	private void RPC_Die()
 	{
 		PlayerStats.Money += worth;
+		enemyAnim.Play ("Death", -1, 0f);
 		PhotonView.Destroy(gameObject);
 	}
 

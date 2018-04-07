@@ -11,6 +11,8 @@ public class P2EnemyMovement : MonoBehaviour {
 	private Vector3 TargetPosition;
 	private Quaternion TargetRotation;
 	private PhotonView PhotonView;
+	[SerializeField]
+	private GameObject unitToRotate;
 
 	private Enemy enemy;
 
@@ -25,6 +27,7 @@ public class P2EnemyMovement : MonoBehaviour {
 		if (PhotonNetwork.isMasterClient) {
 			Vector3 dir = target.position - transform.position;
 			transform.Translate (dir.normalized * enemy.speed * Time.deltaTime, Space.World);
+			LockOnTarget ();
 
 			if (Vector3.Distance (transform.position, target.position) <= 0.2f) {
 				GetNextWaypoint ();
@@ -52,6 +55,14 @@ public class P2EnemyMovement : MonoBehaviour {
 		target = P2Waypoints.points [wavepointIndex];
 	}
 
+	void LockOnTarget()
+	{
+		Vector3 pos = target.position - unitToRotate.transform.position;
+		Quaternion lookRotation = Quaternion.LookRotation(pos);
+		Vector3 rotation = Quaternion.Lerp(unitToRotate.transform.rotation, lookRotation, Time.deltaTime * 10f).eulerAngles;
+		unitToRotate.transform.rotation = Quaternion.Euler (0f, rotation.y, 0f);
+	}
+
 	void WarpToMidLane()
 	{
 		this.transform.position = Manager.instance.t2MidStart.transform.position;
@@ -61,7 +72,7 @@ public class P2EnemyMovement : MonoBehaviour {
 			return;
 		}
 		transform.position = Vector3.Lerp (transform.position, TargetPosition, 0.25f);
-		transform.rotation = Quaternion.RotateTowards (transform.rotation, TargetRotation, 500 * Time.deltaTime);
+		unitToRotate.transform.rotation = Quaternion.RotateTowards (unitToRotate.transform.rotation, TargetRotation, 500 * Time.deltaTime);
 	}
 	private void OnPhotonSerializeView(PhotonStream stream,PhotonMessageInfo info){
 		if (UseTransformView) {
@@ -69,7 +80,7 @@ public class P2EnemyMovement : MonoBehaviour {
 		}
 		if (stream.isWriting) {
 			stream.SendNext (transform.position);
-			stream.SendNext (transform.rotation);
+			stream.SendNext (unitToRotate.transform.rotation);
 		} else {
 			TargetPosition = (Vector3)stream.ReceiveNext ();
 			TargetRotation = (Quaternion)stream.ReceiveNext ();
