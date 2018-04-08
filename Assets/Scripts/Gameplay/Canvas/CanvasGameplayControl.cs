@@ -12,29 +12,19 @@ public class CanvasGameplayControl : MonoBehaviour {
 	public int[] sidePlayer = new int[2] {0,0};
 	public bool winStat = false;
 	public Text countDownWave;
+	public Text playerGold;
 
 	// Use this for initialization
 	void Start () {
 		Instance = this;
 		allPlayerInGame = PhotonNetwork.playerList.Length;
 		standbyCam.SetActive (true);
-		//scenetest
-		/*if (allPlayerInGame == 2){
-			NodeControlForPlayer.Instance.playerNodeK2.SetActive (true);
-			P1Spawner.Instance.enabled = false;
-			NodeControlForPlayer.Instance.playerNodeM1.SetActive (true);
-			P4Spawner.Instance.enabled = false;
-		} else if (allPlayerInGame == 3) {
-		} else if (allPlayerInGame == 4) {
-			NodeControlForPlayer.Instance.playerNodeK2.SetActive (true);
-			NodeControlForPlayer.Instance.playerNodeM1.SetActive (true);
-			NodeControlForPlayer.Instance.playerNodeK1.SetActive (true);
-			NodeControlForPlayer.Instance.playerNodeM2.SetActive (true);
-		}*/
+		playerGold.text = PlayerStats.Money.ToString ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		playerGold.text = PlayerStats.Money.ToString ();
 		if (PhotonNetwork.connectionStateDetailed.ToString () == "Joined") {
 			standbyCam.SetActive (false);
 		}

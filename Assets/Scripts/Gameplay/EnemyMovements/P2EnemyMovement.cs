@@ -24,7 +24,7 @@ public class P2EnemyMovement : MonoBehaviour {
 	}
 	void Update()
 	{
-		if (PhotonNetwork.isMasterClient) {
+		if (PhotonNetwork.isMasterClient && enemy.currentHealth > 0) {
 			Vector3 dir = target.position - transform.position;
 			transform.Translate (dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 			LockOnTarget ();

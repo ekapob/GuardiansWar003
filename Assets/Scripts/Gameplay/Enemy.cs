@@ -103,6 +103,9 @@ public class Enemy : Photon.MonoBehaviour {
 
 	public void TakeDamage(float amount)
 	{
+		float healthCheck = currentHealth - amount;
+		if (healthCheck <= 0)
+			PlayerStats.Money += worth;
 		photonView.RPC ("RPC_Health", PhotonTargets.All,amount); 
 	}
 
@@ -114,9 +117,8 @@ public class Enemy : Photon.MonoBehaviour {
 	[PunRPC]
 	private void RPC_Die()
 	{
-		PlayerStats.Money += worth;
 		enemyAnim.Play ("Death", -1, 0f);
-		PhotonView.Destroy(gameObject);
+		Invoke ("Die",1.25f);
 	}
 
 	[PunRPC]
@@ -128,4 +130,7 @@ public class Enemy : Photon.MonoBehaviour {
 		}
 	}
 
+	void Die(){
+		PhotonView.Destroy(gameObject);
+	}
 }
