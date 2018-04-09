@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{386D1470-256D-2E7D-7D5E-CC76931C9DD0}</ProjectGuid>
+    <ProjectGuid>{97B668BF-F4D5-BD14-956A-23752DCA66BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor-firstpass</AssemblyName>
@@ -46,7 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\UnityPurchasing\Editor\IAPButtonEditor.cs" />
+     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
      <None Include="Assets\Plugins\Android\unityads\res\layout\unityads_view_video_play.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-kk-rKZ\location_strings.xml" />
      <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
@@ -92,7 +92,6 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fr\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rTW\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-iw\common_strings.xml" />
-     <None Include="Assets\Resources\Font\johnnytorch.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sq-rAL\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hy-rAM\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sv\wallet_strings.xml" />
@@ -110,6 +109,7 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\maps_attrs.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-af\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ko\base_strings.xml" />
+     <None Include="Assets\Asset\Lava_Flowing_Shader\Shaders\Unlit_Lava_Simple.shader" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\wallet_secondary_text_holo_dark.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rCN\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rCN\base_strings.xml" />
@@ -129,7 +129,6 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sr\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ru\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\layout-v21\place_autocomplete_fragment.xml" />
-     <None Include="Assets\Scripts\SimpleIAPSystem\Extensions\remote.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ms-rMY\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ru\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-el\common_strings.xml" />
@@ -153,6 +152,7 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es-rUS\base_strings.xml" />
      <None Include="Assets\Resources\config.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rHK\location_strings.xml" />
+     <None Include="Assets\Asset\Lava_Flowing_Shader\Shaders\Diffuse_Lava_Distort.shader" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\common_plus_signin_btn_text_light.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-kk-rKZ\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-th\location_strings.xml" />
@@ -173,6 +173,8 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-zh-rCN\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sk\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mn-rMN\location_strings.xml" />
+     <None Include="Assets\Asset\Lava_Flowing_Shader\Shaders\Unlit_Lava_Distort.shader" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sw\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-eu-rES\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt\common_strings.xml" />
@@ -182,7 +184,7 @@
      <None Include="Assets\Plugins\release_history.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fr\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-iw\location_strings.xml" />
-     <None Include="Assets\Scripts\SimpleIAPSystem\README.txt" />
+     <None Include="Assets\Asset\Lava_Flowing_Shader\Shaders\Unlit_Lava_Distort_Transparent.shader" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-fa\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rPT\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-mr-rIN\base_strings.xml" />
@@ -197,7 +199,6 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-da\wallet_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pa-rIN\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-lo-rLA\location_strings.xml" />
-     <None Include="Assets\Scripts\SimpleIAPSystem\Changelog.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ja\base_strings.xml" />
      <None Include="Assets\Plugins\Android\unityads\res\drawable\unityads_background_button_pause.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ro\wallet_strings.xml" />
@@ -240,13 +241,17 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-km-rKH\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-de\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-es\common_strings.xml" />
+     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hr\common_strings.xml" />
+     <None Include="Assets\Asset\Lava_Flowing_Shader\ReadMe.txt" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-en-rGB\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-te-rIN\location_strings.xml" />
      <None Include="Assets\Plugins\Android\unityads\res\drawable\unityads_icon_speaker_triangle.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pt-rPT\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hr\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values\cast_ids.xml" />
+     <None Include="Assets\Asset\Teleportation Pad\README.txt" />
+     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Plugins\Android\unityads\res\values\strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\drawable\common_plus_signin_btn_text_light.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ko\location_strings.xml" />
@@ -292,6 +297,7 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-de\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-si-rLK\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ky-rKG\common_strings.xml" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ro\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-hr\location_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-da\location_strings.xml" />
@@ -366,11 +372,12 @@
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ja\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ta-rIN\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-af\common_strings.xml" />
-     <None Include="Assets\Scripts\PlayServicesResolver\Editor\play-services-resolver.txt" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-sq-rAL\common_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-ka-rGE\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-da\base_strings.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\color\wallet_primary_text_holo_light.xml" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-my-rMM\location_strings.xml" />
      <None Include="Assets\Plugins\Android\unityads\res\layout\unityads_button_pause.xml" />
      <None Include="Assets\Plugins\Android\google-play-services_lib\res\values-pl\common_strings.xml" />
@@ -456,13 +463,16 @@
  <HintPath>D:/Program Files (x86)/Unity 5.5.2/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar003/Assets/Photon Unity Networking/Editor/PhotonNetwork/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar003/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ </Reference>
+ <Reference Include="UTNotifications">
+ <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar003/Assets/Plugins/UTNotifications.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/ekapo/Documents/GitHub/GuardiansWar003/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>D:/Program Files (x86)/Unity 5.5.2/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -473,43 +483,10 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>D:/Program Files (x86)/Unity 5.5.2/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="Google.JarResolver">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Scripts/PlayServicesResolver/Editor/Google.JarResolver.dll</HintPath>
- </Reference>
- <Reference Include="Google.IOSResolver">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Scripts/PlayServicesResolver/Editor/Google.IOSResolver.dll</HintPath>
- </Reference>
- <Reference Include="Security">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/UnityPurchasing/Bin/Security.dll</HintPath>
- </Reference>
- <Reference Include="Apple">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/UnityPurchasing/Bin/Apple/Apple.dll</HintPath>
- </Reference>
- <Reference Include="Common">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/UnityPurchasing/Bin/Common.dll</HintPath>
- </Reference>
- <Reference Include="Stores">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/UnityPurchasing/Bin/Stores.dll</HintPath>
- </Reference>
- <Reference Include="Tizen">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/UnityPurchasing/Bin/Tizen/Tizen.dll</HintPath>
- </Reference>
- <Reference Include="winrt">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/UnityPurchasing/winrt/winrt.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandler">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Scripts/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
- </Reference>
- <Reference Include="UTNotifications">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/UTNotifications.dll</HintPath>
- </Reference>
- <Reference Include="Editor">
- <HintPath>D:/Work/HW/Game Dev/Guardians War/Assets/Plugins/UnityPurchasing/Bin/Editor.dll</HintPath>
- </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{465704D8-50A2-A7DB-66C9-6CFA4AD9C716}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{53CC8A59-BB3C-FF41-F4D6-4438C1BD0E53}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
