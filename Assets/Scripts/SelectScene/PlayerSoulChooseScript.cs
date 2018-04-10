@@ -138,6 +138,14 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 		photonView.RPC ("RPC_OnClickMode2", PhotonTargets.All); 
 	}
 
+	public void ClickKnight(){
+		photonView.RPC ("RPC_OnClickKnight", PhotonTargets.MasterClient); 
+	}
+
+	public void ClickMonster(){
+		photonView.RPC ("RPC_OnClickMonster", PhotonTargets.MasterClient); 
+	}
+
 	[PunRPC] 
 	private void RPC_Bomb()
 	{ 
@@ -166,17 +174,41 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 
 	[PunRPC]
 	private void RPC_OnClickMode1(){
-		CanvasGameButton.Instance.modePrintTxt.text = "Mode : Ah Base is on FIRE";
+		CanvasGameButton.Instance.modePrintTxt.text = "Ah Base is on FIRE";
 		mode = 1;
-		CanvasGameButton.Instance.timer = 3f;
+		if(CanvasGameButton.Instance.timer > 3f)
+			CanvasGameButton.Instance.timer = 3f;
 	}
 
 	[PunRPC]
 	private void RPC_OnClickMode2(){
-		CanvasGameButton.Instance.modePrintTxt.text = "Mode : KilL'a BosSSS";
+		CanvasGameButton.Instance.modePrintTxt.text = "KilL'a BosSSS";
 		mode = 2;
-		CanvasGameButton.Instance.timer = 3f;
+		if(CanvasGameButton.Instance.timer > 3f)
+			CanvasGameButton.Instance.timer = 3f;
 	}
 
+	[PunRPC]
+	private void RPC_OnClickKnight(){
+		CanvasGameButton.Instance.knightPicked++;
+		photonView.RPC ("RPC_MasterSide", PhotonTargets.All,CanvasGameButton.Instance.knightPicked,CanvasGameButton.Instance.monsterPicked); 
+	}
 
+	[PunRPC]
+	private void RPC_OnClickMonster(){
+		CanvasGameButton.Instance.monsterPicked++;
+		photonView.RPC ("RPC_MasterSide", PhotonTargets.All,CanvasGameButton.Instance.knightPicked,CanvasGameButton.Instance.monsterPicked); 
+	}
+
+	[PunRPC]
+	private void RPC_MasterSide(int kniPick,int monPick){
+		CanvasGameButton.Instance.knightPickedText.text = kniPick.ToString ();
+		CanvasGameButton.Instance.monsterPickedText.text = monPick.ToString ();
+		if (kniPick >= PhotonNetwork.playerList.Length/2) {
+			CanvasGameButton.Instance.kniBut.interactable = false;
+		}
+		if (monPick >= PhotonNetwork.playerList.Length/2) {
+			CanvasGameButton.Instance.monBut.interactable = false;
+		}
+	}
 }
