@@ -25,7 +25,7 @@ public class CanvasGameButton : MonoBehaviour {
 	public bool kickKeyLock;
 	public int playMode;// 1 : Ah Base is on FIRE | 2 : KilL'a BosSSS
 	public int playSide;// 1 : Knight | 2 : Monster
-	public int[] side;
+	public int[] sidePlayer;
 	public bool clickModeState;
 	public Text modePrintTxt;
 	public Button mode1But;
@@ -46,7 +46,7 @@ public class CanvasGameButton : MonoBehaviour {
 		monsterPicked = 0;
 		sidePicChoose.gameObject.SetActive (false);
 		clickModeState = true;
-		side = new int[PhotonNetwork.playerList.Length];
+		sidePlayer = new int[PhotonNetwork.playerList.Length];
 		clockCount.text = timeToStr.ToString ();
 		pause = false;
 		allButton.SetActive (false);
@@ -120,20 +120,16 @@ public class CanvasGameButton : MonoBehaviour {
 	}
 
 	public void CalculateMode(){
-		/*if (mode [1] > mode [2]) {
-			playMode = 1;
-		} else if (mode [1] < mode [2]) {
-			playMode = 2;
+		int randMode = Random.Range (1, 100);
+		if (randMode % 2 == 1) {
+			PlayerSoulChooseScript.Instance.mode = 1;
+			PlayerSoulChooseScript.Instance.ClickMode1 ();
 		} else {
-			int randMode = Random.Range (1, 100);
-			if (randMode % 2 == 1) {
-				playMode = 1;
-			} else {
-				playMode = 2;
-			}
-		}*/
+			PlayerSoulChooseScript.Instance.mode = 2;
+			PlayerSoulChooseScript.Instance.ClickMode2 ();
+		}
 	}
-
+		
 
 	private void TimerText(){
 		timer -= Time.deltaTime;
@@ -142,48 +138,16 @@ public class CanvasGameButton : MonoBehaviour {
 	}
 
 	public void CalculateSide(){
-		//int[] use = new int[PhotonNetwork.playerList.Length];
-		/*int side1 = 0;
-		int side2 = 0;
-		int side0 = 0;
-		bool toGameScene = false;
-		while (!toGameScene) {
-			int kni = 0;
-			int mon = 0;
-			for (int i = 0; i < PhotonNetwork.playerList.Length; i++) {
-				if (side [i] == 1) {
-					kni++;
-				} 
-				if (side [i] == 2) {
-					mon++;
+		for (int i = 0; i < PhotonNetwork.playerList.Length; i++) {
+			if (sidePlayer [i] == 0) {
+				if (knightPicked < PhotonNetwork.playerList.Length/2) {
+					sidePlayer [i] = 1;
+					knightPicked++;
+				} else if(monsterPicked < PhotonNetwork.playerList.Length/2){
+					sidePlayer [i] = 2;
+					monsterPicked++;
 				}
 			}
-
-			for (int i = 0; i < PhotonNetwork.playerList.Length; i++) {
-				if (side [i] == 0) {
-					if (kni < PhotonNetwork.playerList.Length / 2) {
-						side [i] = 1;
-						kni++;
-						continue;
-					}
-					if (mon < PhotonNetwork.playerList.Length / 2) {
-						side [i] = 2;
-						mon++;
-						continue;
-					}
-				}
-			}
-			//check
-			for (int i = 0; i < limitPlayer && !toGameScene; i++) {
-				if (side [i] == 0) {
-					break;
-				}
-				if (i + 1 == limitPlayer) {
-					toGameScene = true;
-					break;
-				}
-			}
-
-		}*/
+		}
 	}
 }

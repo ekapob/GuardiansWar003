@@ -26,7 +26,7 @@ public class TestNode : MonoBehaviour {
 	public void OnMouseEnter(){
 		if (!CanvasGameplayControl.Instance.winStat) {
 			if (turret == null) {
-				if (PlayerNetwork.Instance.joinRoomNum.ToString () == tag)
+				if (MotherScript.Instance.currentGameSide.ToString () == tag)
 					rend.material.color = hoverColor;
 			}
 		}
@@ -35,13 +35,13 @@ public class TestNode : MonoBehaviour {
 	public void OnMouseDown(){
 		if (!CanvasGameplayControl.Instance.winStat) {
 			if (turret != null) {
-				if(PlayerNetwork.Instance.joinRoomNum.ToString () == tag)
+				if(MotherScript.Instance.currentGameSide.ToString () == tag)
 					turretScript.turretUI.SetActive (true);
 			} else {
 				if (Manager.instance.buildName == null) {
 					return;
 				}
-				if (PlayerNetwork.Instance.joinRoomNum.ToString () == tag) {
+				if (MotherScript.Instance.currentGameSide.ToString () == tag) {
 					CameraController.Instance.currentClickNode = nodeNo;
 					CameraController.Instance.CreateTower (Manager.instance.buildName);
 					Manager.instance.buildName = null;

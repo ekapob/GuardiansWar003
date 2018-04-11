@@ -177,10 +177,10 @@ public class Turret : Photon.MonoBehaviour {
 
 	public void OnClickSell(){
 		if (photonView.isMine) {
-			if (PlayerNetwork.Instance.joinRoomNum == 1) {
+			if (MotherScript.Instance.currentGameSide == 1) {
 				TestNode node = TestNode1.Instance.node [onNode];
 				node.SetNodeToNull ();
-			} else if (PlayerNetwork.Instance.joinRoomNum == 2) {
+			} else if (MotherScript.Instance.currentGameSide == 2) {
 				TestNode node = TestNode2.Instance.node [onNode];
 				node.SetNodeToNull ();
 			}
@@ -199,10 +199,10 @@ public class Turret : Photon.MonoBehaviour {
 	public void OnClickUpgrade(){
 		GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", upGradePrefab.name), transform.position, transform.rotation, 0);	
 		Turret objScript = objTurret.GetComponent<Turret> ();
-		if (PlayerNetwork.Instance.joinRoomNum == 1) {	
+		if (MotherScript.Instance.currentGameSide == 1) {	
 			TestNode1.Instance.node [onNode].SetTurret (objTurret, objScript);
 		}
-		else if (PlayerNetwork.Instance.joinRoomNum == 2) {	
+		else if (MotherScript.Instance.currentGameSide == 2) {	
 			TestNode2.Instance.node [onNode].SetTurret (objTurret, objScript);
 		}
 		PhotonNetwork.Destroy (gameObject);

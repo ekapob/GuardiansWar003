@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 
 	public static PlayerSoulChooseScript Instance;
-	private int mode = 0;
+	public int mode = 0;
 	private int sidepick = 0;
 	[SerializeField]
 	private GameObject burn;
@@ -38,24 +38,24 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 			if (CanvasGameButton.Instance.timer < 0f && moveAble) {
 				moveAble = false;
 				if (!toGame) {
-					photonView.RPC ("RPC_ModeSend", PhotonTargets.All); 
+					if(PhotonNetwork.isMasterClient && CanvasGameButton.Instance.mode1But.IsInteractable()){
+						CanvasGameButton.Instance.CalculateMode ();// CALCULATE MODE
+					}
+					CanvasGameButton.Instance.mode1But.interactable = false;
+					CanvasGameButton.Instance.mode2But.interactable = false;
 					Invoke ("MoveToSpawner", 2.5f);
 					toGame = true;
 				} else if (toGame) {
-					photonView.RPC ("RPC_SideSend", PhotonTargets.All); 
-					//if (PhotonNetwork.isMasterClient) {
-						CanvasGameButton.Instance.CalculateMode ();// CALCULATE MODE
-						CanvasGameButton.Instance.CalculateSide ();// CALCULATE SIDE
-						photonView.RPC ("RPC_ModePlay", PhotonTargets.All); 
-						photonView.RPC ("RPC_SidePlay", PhotonTargets.All); 
-					//}
-					side = PlayerNetwork.Instance.joinRoomNum;
+					if (PhotonNetwork.isMasterClient) {
+						if(CanvasGameButton.Instance.knightPicked+CanvasGameButton.Instance.monsterPicked != PhotonNetwork.playerList.Length){
+							CanvasGameButton.Instance.CalculateSide ();// CALCULATE SIDE
+						}
+						photonView.RPC ("RPC_SendMode", PhotonTargets.All,mode); 
+						photonView.RPC ("RPC_SendSide", PhotonTargets.All,CanvasGameButton.Instance.sidePlayer); 
+						PhotonNetwork.LoadLevel (4);
+					}
 					CanvasGameButton.Instance.clockCount.text = mode.ToString();
-					//MotherScript.Instance.currentGameMode = mode;
-					MotherScript.Instance.currentGameMode = 1;
-					MotherScript.Instance.currentGameSide = side;
 					PlayerNetwork.Instance.PlayersInGame = 0;
-					PhotonNetwork.LoadLevel (4);
 				}
 			}
 		}
@@ -86,23 +86,6 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 		}
 		transform.position = Vector3.Lerp (transform.position, TargetPosition, 0.25f);
 		transform.rotation = Quaternion.RotateTowards (transform.rotation, TargetRotation, 500 * Time.deltaTime);
-	}
-
-	void OnTriggerEnter(Collider other){
-		if (other.tag == "Mode1") {
-			mode = 1;
-		} else if (other.tag == "Mode2") {
-			mode = 2;
-		} else if (other.tag == "ModeRand") {
-			mode = 0;
-		}
-		if (other.tag == "Side1") {
-			sidepick = 1;
-		} else if (other.tag == "Side2") {
-			sidepick = 2;
-		} else if (other.tag == "SideRand") {
-			sidepick = 0;
-		}
 	}
 
 	void MoveToSpawner(){
@@ -139,37 +122,17 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 	}
 
 	public void ClickKnight(){
-		photonView.RPC ("RPC_OnClickKnight", PhotonTargets.MasterClient); 
+		photonView.RPC ("RPC_OnClickKnight", PhotonTargets.MasterClient,PlayerNetwork.Instance.joinRoomNum); 
 	}
 
 	public void ClickMonster(){
-		photonView.RPC ("RPC_OnClickMonster", PhotonTargets.MasterClient); 
+		photonView.RPC ("RPC_OnClickMonster", PhotonTargets.MasterClient,PlayerNetwork.Instance.joinRoomNum); 
 	}
 
 	[PunRPC] 
 	private void RPC_Bomb()
 	{ 
 		burn.SetActive (true); 
-	}
-
-	//Send Number of enter zone
-	[PunRPC]
-	private void RPC_ModeSend(){
-		CanvasGameButton.Instance.mode [mode]++;
-	}
-	[PunRPC]
-	private void RPC_SideSend(){
-		CanvasGameButton.Instance.side [PlayerNetwork.Instance.joinRoomNum - 1] = sidepick;
-	}
-
-	[PunRPC]
-	private void RPC_ModePlay(){
-		mode = CanvasGameButton.Instance.playMode;
-	}
-
-	[PunRPC]
-	private void RPC_SidePlay(){
-		side = CanvasGameButton.Instance.side [PlayerNetwork.Instance.joinRoomNum - 1];
 	}
 
 	[PunRPC]
@@ -189,14 +152,16 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 	}
 
 	[PunRPC]
-	private void RPC_OnClickKnight(){
+	private void RPC_OnClickKnight(int playerPos){
 		CanvasGameButton.Instance.knightPicked++;
+		CanvasGameButton.Instance.sidePlayer[playerPos-1] = 1;
 		photonView.RPC ("RPC_MasterSide", PhotonTargets.All,CanvasGameButton.Instance.knightPicked,CanvasGameButton.Instance.monsterPicked); 
 	}
 
 	[PunRPC]
-	private void RPC_OnClickMonster(){
+	private void RPC_OnClickMonster(int playerPos){
 		CanvasGameButton.Instance.monsterPicked++;
+		CanvasGameButton.Instance.sidePlayer[playerPos-1] = 2;
 		photonView.RPC ("RPC_MasterSide", PhotonTargets.All,CanvasGameButton.Instance.knightPicked,CanvasGameButton.Instance.monsterPicked); 
 	}
 
@@ -210,5 +175,15 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 		if (monPick >= PhotonNetwork.playerList.Length/2) {
 			CanvasGameButton.Instance.monBut.interactable = false;
 		}
+	}
+
+
+	[PunRPC]
+	private void RPC_SendMode(int gameMode){
+		MotherScript.Instance.currentGameMode = gameMode;
+	}
+	[PunRPC]
+	private void RPC_SendSide(int[] sidePick){
+		MotherScript.Instance.currentGameSide = sidePick[PlayerNetwork.Instance.joinRoomNum-1];
 	}
 }

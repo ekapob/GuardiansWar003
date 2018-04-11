@@ -93,12 +93,12 @@ public class CameraController : Photon.MonoBehaviour {
 	}
 
 	public void CreateTower(string name){
-		if (PlayerNetwork.Instance.joinRoomNum == 1) {
+		if (MotherScript.Instance.currentGameSide == 1) {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode1.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
 			Turret objScript = objTurret.GetComponent<Turret> ();
 			TestNode1.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
 		}
-		else if (PlayerNetwork.Instance.joinRoomNum == 2) {
+		else if (MotherScript.Instance.currentGameSide == 2) {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode2.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
 			Turret objScript = objTurret.GetComponent<Turret> ();
 			TestNode2.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
