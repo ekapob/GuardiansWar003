@@ -19,6 +19,10 @@ public class CanvasGameplayControl : MonoBehaviour {
 	public Button CloseShopBut;
 	public Button openUnitBut;
 	public Button CloseUnitBut;
+	public Button upGrade1but;
+	public Button upGrade2but;
+	public Button upGrade3but;
+	public Button upGrade4but;
 
 	// Use this for initialization
 	void Start () {
@@ -63,5 +67,35 @@ public class CanvasGameplayControl : MonoBehaviour {
 		unitUI.SetActive (false);
 		CloseUnitBut.gameObject.SetActive (false);
 		openUnitBut.gameObject.SetActive (true);
+		upGrade1but.gameObject.SetActive (false);
+		upGrade2but.gameObject.SetActive (false);
+		upGrade3but.gameObject.SetActive (false);
+		upGrade4but.gameObject.SetActive (false);
+	}
+
+	public void OnClickAllowUpgrade1(){
+		upGrade1but.gameObject.SetActive (true);
+	}
+	public void OnClickAllowUpgrade2(){
+		upGrade2but.gameObject.SetActive (true);
+	}
+	public void OnClickAllowUpgrade3(){
+		upGrade3but.gameObject.SetActive (true);
+	}
+	public void OnClickAllowUpgrade4(){
+		upGrade4but.gameObject.SetActive (true);
+	}
+
+	public void OnClickExitUpgrade1(){
+		upGrade1but.gameObject.SetActive (false);
+	}
+	public void OnClickExitUpgrade2(){
+		upGrade2but.gameObject.SetActive (false);
+	}
+	public void OnClickExitUpgrade3(){
+		upGrade3but.gameObject.SetActive (false);
+	}
+	public void OnClickExitUpgrade4(){
+		upGrade4but.gameObject.SetActive (false);
 	}
 }

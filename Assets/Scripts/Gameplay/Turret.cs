@@ -207,5 +207,7 @@ public class Turret : Photon.MonoBehaviour {
 		}
 		PhotonNetwork.Destroy (gameObject);
 	}
-
+	public void OnClickCloseCanvas(){
+		turretUI.gameObject.SetActive (false);
+	}
 }

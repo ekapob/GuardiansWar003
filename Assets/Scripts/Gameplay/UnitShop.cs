@@ -12,9 +12,19 @@ public class UnitShop : MonoBehaviour {
 	public Text[] unitLvl;
 	public int[] lvlUnit;
 	public Color maxUnitFontColor;
+	public int[] lvlPrice;
+	public Text unit1price;
+	public Text unit2price;
+	public Text unit3price;
+	public Text unit4price;
+
 
 	// Use this for initialization
 	void Start () {
+		unit1price.text = lvlPrice [0].ToString();
+		unit2price.text = lvlPrice [0].ToString();
+		unit3price.text = lvlPrice [0].ToString();
+		unit4price.text = lvlPrice [0].ToString();
 		Instance = this;
 		if (MotherScript.Instance.currentGameSide == 1) {
 			shopImg [0].texture = knightPic [0];
@@ -30,6 +40,8 @@ public class UnitShop : MonoBehaviour {
 	}
 
 	public void OnClickUpgradePos1(){
+		unit1price.text = lvlPrice [1].ToString();
+		CanvasGameplayControl.Instance.upGrade1but.gameObject.SetActive (false);
 		if (lvlUnit [0] < 3) {
 			CameraController.Instance.UpgradeUnit (1, MotherScript.Instance.currentGameSide);
 			lvlUnit [0]++;
@@ -39,6 +51,8 @@ public class UnitShop : MonoBehaviour {
 		}
 	}
 	public void OnClickUpgradePos2(){
+		unit2price.text = lvlPrice [1].ToString();
+		CanvasGameplayControl.Instance.upGrade2but.gameObject.SetActive (false);
 		if (lvlUnit [1] < 3) {
 			CameraController.Instance.UpgradeUnit (2, MotherScript.Instance.currentGameSide);
 			lvlUnit [1]++;
@@ -48,6 +62,8 @@ public class UnitShop : MonoBehaviour {
 		}
 	}
 	public void OnClickUpgradePos3(){
+		unit3price.text = lvlPrice [1].ToString();
+		CanvasGameplayControl.Instance.upGrade3but.gameObject.SetActive (false);
 		if (lvlUnit [2] < 3) {
 			CameraController.Instance.UpgradeUnit (3, MotherScript.Instance.currentGameSide);
 			lvlUnit [2]++;
@@ -57,6 +73,8 @@ public class UnitShop : MonoBehaviour {
 		}
 	}
 	public void OnClickUpgradePos4(){
+		unit4price.text = lvlPrice [1].ToString();
+		CanvasGameplayControl.Instance.upGrade4but.gameObject.SetActive (false);
 		if (lvlUnit [3] < 3) {
 			CameraController.Instance.UpgradeUnit (4, MotherScript.Instance.currentGameSide);
 			lvlUnit [3]++;
