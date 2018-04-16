@@ -19,6 +19,22 @@ public class P1Spawner : MonoBehaviour {
 	public Text waveCountdownText;
 
 	private int waveIndex = 0;
+	[Header("Unit 1 Stat")]
+	public float baseHp1 = 100f;
+	public float baseSpd1 = 10f;
+	public float baseSize1 = 1f;
+	[Header("Unit 2 Stat")]
+	public float baseHp2 = 100f;
+	public float baseSpd2 = 10f;
+	public float baseSize2 = 1f;
+	[Header("Unit 3 Stat")]
+	public float baseHp3 = 100f;
+	public float baseSpd3 = 10f;
+	public float baseSize3 = 1f;
+	[Header("Unit 4 Stat")]
+	public float baseHp4 = 100f;
+	public float baseSpd4 = 10f;
+	public float baseSize4 = 1f;
 
 	void Start()
 	{
@@ -44,35 +60,53 @@ public class P1Spawner : MonoBehaviour {
 	IEnumerator SpawnWave()
 	{
 		waveIndex++;
-
-		//for (int i = 0; i < waveIndex; i++) 
-		//{
-			SpawnEnemy1();
-			yield return new WaitForSeconds (0.5f);
-			SpawnEnemy1();
-			yield return new WaitForSeconds (0.5f);
-			SpawnEnemy2();
-			yield return new WaitForSeconds (0.5f);
-			SpawnEnemy3();
-			yield return new WaitForSeconds (0.5f);
-		//}
+		SpawnEnemy1(baseHp1,baseSpd1,baseSize1);
+		yield return new WaitForSeconds (0.5f);
+		SpawnEnemy1(baseHp2,baseSpd2,baseSize2);
+		yield return new WaitForSeconds (0.5f);
+		SpawnEnemy2(baseHp3,baseSpd3,baseSize3);
+		yield return new WaitForSeconds (0.5f);
+		SpawnEnemy3(baseHp4,baseSpd4,baseSize4);
 	}
 
-	void SpawnEnemy1()
+	void SpawnEnemy1(float a,float b,float c)
 	{
-		PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P1Enemies", enemy1Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
-		//Instantiate (enemy1Prefab, spawnPoint.position, spawnPoint.rotation);
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P1Enemies", enemy1Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+		Enemy objScript = unit.GetComponent<Enemy> ();
+		objScript.SetStat (a, b, c);
 	}
 
-	void SpawnEnemy2()
+	void SpawnEnemy2(float a,float b,float c)
 	{
-		PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P1Enemies", enemy2Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
-		//Instantiate (enemy2Prefab, spawnPoint.position, spawnPoint.rotation);
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P1Enemies", enemy2Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+		Enemy objScript = unit.GetComponent<Enemy> ();
+		objScript.SetStat (a, b, c);
 	}
 
-	void SpawnEnemy3()
+	void SpawnEnemy3(float a,float b,float c)
 	{
-		PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P1Enemies", enemy3Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
-		//Instantiate (enemy3Prefab, spawnPoint.position, spawnPoint.rotation);
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit/P1Enemies", enemy3Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+		Enemy objScript = unit.GetComponent<Enemy> ();
+		objScript.SetStat (a, b, c);
+	}
+
+	public void UpgradeUnit(int pos){
+		if (pos == 1) {
+			baseHp1 *= 2;
+			baseSpd1 *= 1.25f;
+			baseSize1++;
+		} else if (pos == 2) {
+			baseHp2 *= 2;
+			baseSpd2 *= 1.25f;
+			baseSize2++;
+		} else if (pos == 3) {
+			baseHp3 *= 2;
+			baseSpd3 *= 1.25f;
+			baseSize3++;
+		} else if (pos == 4) {
+			baseHp4 *= 2;
+			baseSpd4 *= 1.25f;
+			baseSize4++;
+		}
 	}
 }

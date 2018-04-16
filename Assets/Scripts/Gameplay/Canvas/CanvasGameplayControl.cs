@@ -13,6 +13,12 @@ public class CanvasGameplayControl : MonoBehaviour {
 	public bool winStat = false;
 	public Text countDownWave;
 	public Text playerGold;
+	public GameObject shopUI;
+	public GameObject unitUI;
+	public Button openShopBut;
+	public Button CloseShopBut;
+	public Button openUnitBut;
+	public Button CloseUnitBut;
 
 	// Use this for initialization
 	void Start () {
@@ -36,5 +42,26 @@ public class CanvasGameplayControl : MonoBehaviour {
 		}
 	}
 
+	public void OnClickOpenShop(){
+		shopUI.SetActive (true);
+		CloseShopBut.gameObject.SetActive (true);
+		openShopBut.gameObject.SetActive (false);
+	}
 
+	public void OnClickCloseShop(){
+		shopUI.SetActive (false);
+		openShopBut.gameObject.SetActive (true);
+		CloseShopBut.gameObject.SetActive (false);
+	}
+	public void OnClickOpenUnit(){
+		unitUI.SetActive (true);
+		CloseUnitBut.gameObject.SetActive (true);
+		openUnitBut.gameObject.SetActive (false);
+	}
+
+	public void OnClickCloseUnit(){
+		unitUI.SetActive (false);
+		CloseUnitBut.gameObject.SetActive (false);
+		openUnitBut.gameObject.SetActive (true);
+	}
 }

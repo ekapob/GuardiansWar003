@@ -25,7 +25,6 @@ public class CameraController : Photon.MonoBehaviour {
 		Instance = this;
 		PhotonView = GetComponent<PhotonView> ();
 		CanvasGameplayControl.Instance.loadingImg.SetActive (false);
-		photonView.RPC ("RPC_SendSideGameplay",PhotonTargets.All);
 		turretToBuildx = standardTurretPrefabx;
 	}
 	void Update ()
@@ -85,13 +84,6 @@ public class CameraController : Photon.MonoBehaviour {
 		}
 	}
 
-
-	[PunRPC]
-	private void RPC_SendSideGameplay(){
-		//Bug
-		//CanvasGameplayControl.Instance.sidePlayer[MotherScript.Instance.currentGameSide]++;
-	}
-
 	public void CreateTower(string name){
 		if (MotherScript.Instance.currentGameSide == 1) {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode1.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
@@ -105,5 +97,22 @@ public class CameraController : Photon.MonoBehaviour {
 		}
 	}
 
+	public void UpgradeUnit(int pos,int side){
+		if (side == 1) {
+			photonView.RPC ("RPC_MonUpgradeUnit", PhotonTargets.MasterClient, pos);
+		}
+		if (side == 2) {
+			photonView.RPC ("RPC_KniUpgradeUnit", PhotonTargets.MasterClient, pos);
+		}
+		
+	}
 
+	[PunRPC]
+	private void RPC_KniUpgradeUnit(int pos){
+		P1Spawner.Instance.UpgradeUnit (pos);
+	}
+	[PunRPC]
+	private void RPC_MonUpgradeUnit(int pos){
+		P2Spawner.Instance.UpgradeUnit (pos);
+	}
 }

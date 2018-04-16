@@ -18,7 +18,6 @@ public class MotherScript : MonoBehaviour {
 		currentGameSide = 0;
 		Instance = this;
 		DontDestroyOnLoad (this);
-		StartCoroutine(W());
 		Load ();
 		if (inGameName == "") {
 			inGameName = "Distul#" + Random.Range (1000, 9999);
@@ -34,12 +33,6 @@ public class MotherScript : MonoBehaviour {
 		savedata.soundMusic = soundMusic;
 		savedata.soundSfx = soundSfx;
 		File.WriteAllText(Application.persistentDataPath + "/GuardiansWar.txt", enc.Encrypt(JsonUtility.ToJson(savedata), "Keyword"));
-	}
-	IEnumerator W()
-	{
-		yield return new WaitForSeconds (1);
-
-		SceneManager.LoadScene (1);
 	}
 	public void Load()
 	{

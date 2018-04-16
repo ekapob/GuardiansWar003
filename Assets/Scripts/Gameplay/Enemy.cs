@@ -12,6 +12,7 @@ public class Enemy : Photon.MonoBehaviour {
 	private Transform target;
 	private PhotonView PhotonView;
 
+
 	private float range = 2.5f;
 
 	public GameObject enemyAttackPrefab;
@@ -34,7 +35,9 @@ public class Enemy : Photon.MonoBehaviour {
 	public int worth = 50;
 
 	public Image healthBar;
+	public float size;
 	public Animator enemyAnim;
+
 
 	void Start()
 	{
@@ -43,6 +46,7 @@ public class Enemy : Photon.MonoBehaviour {
 		PhotonView = GetComponent<PhotonView> ();
 
 		speed = startSpeed;
+		transform.localScale *= size;
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
 
@@ -71,12 +75,11 @@ public class Enemy : Photon.MonoBehaviour {
 	}
 
 	void Update () {
-		if (target == null) 
-		{
+		if (target == null) {
 			return;
 		}
 
-		LockOnTarget();
+		LockOnTarget ();
 
 		if (fireCountdown <= 0f) {
 			Shoot ();
@@ -132,5 +135,11 @@ public class Enemy : Photon.MonoBehaviour {
 
 	void Die(){
 		PhotonView.Destroy(gameObject);
+	}
+
+	public void SetStat(float baseHealth,float baseSpeed,float baseSize){
+		startHealth = baseHealth;
+		startSpeed = baseSpeed;
+		size = baseSize;
 	}
 }
