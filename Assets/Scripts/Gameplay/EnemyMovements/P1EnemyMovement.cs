@@ -13,21 +13,22 @@ public class P1EnemyMovement : Photon.MonoBehaviour {
 	private PhotonView PhotonView;
 	[SerializeField]
 	private GameObject unitToRotate;
-
+	public bool moveAble;
 	private Enemy enemy;
+
 	void Start()
 	{
+		moveAble = true;
 		enemy = GetComponent<Enemy> ();
 		PhotonView = GetComponent<PhotonView> ();
 		target = P1Waypoints.points[0];
 	}
 	void Update()
 	{
-		if (PhotonNetwork.isMasterClient && enemy.currentHealth > 0) {
+		if (PhotonNetwork.isMasterClient && moveAble) {
 			Vector3 dir = target.position - transform.position;
 			transform.Translate (dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 			LockOnTarget ();
-			
 
 			if (Vector3.Distance (transform.position, target.position) <= 0.2f) {
 				GetNextWaypoint ();
@@ -85,5 +86,8 @@ public class P1EnemyMovement : Photon.MonoBehaviour {
 			TargetPosition = (Vector3)stream.ReceiveNext ();
 			TargetRotation = (Quaternion)stream.ReceiveNext ();
 		}
+	}
+	public void DontMove(){
+		moveAble = false;
 	}
 }

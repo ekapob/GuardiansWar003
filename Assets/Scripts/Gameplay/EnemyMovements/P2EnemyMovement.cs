@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Enemy))]
-public class P2EnemyMovement : MonoBehaviour {
+public class P2EnemyMovement : Photon.MonoBehaviour {
 
 	private Transform target;
 	private int wavepointIndex = 0;
@@ -13,18 +13,19 @@ public class P2EnemyMovement : MonoBehaviour {
 	private PhotonView PhotonView;
 	[SerializeField]
 	private GameObject unitToRotate;
-
+	public bool moveAble;
 	private Enemy enemy;
 
 	void Start()
 	{
+		moveAble = true;
 		enemy = GetComponent<Enemy> ();
 		PhotonView = GetComponent<PhotonView> ();
 		target = P2Waypoints.points[0];
 	}
 	void Update()
 	{
-		if (PhotonNetwork.isMasterClient && enemy.currentHealth > 0) {
+		if (PhotonNetwork.isMasterClient && moveAble) {
 			Vector3 dir = target.position - transform.position;
 			transform.Translate (dir.normalized * enemy.speed * Time.deltaTime, Space.World);
 			LockOnTarget ();
@@ -85,5 +86,8 @@ public class P2EnemyMovement : MonoBehaviour {
 			TargetPosition = (Vector3)stream.ReceiveNext ();
 			TargetRotation = (Quaternion)stream.ReceiveNext ();
 		}
+	}
+	public void DontMove(){
+		moveAble = false;
 	}
 }

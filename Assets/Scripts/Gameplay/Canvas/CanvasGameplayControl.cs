@@ -74,15 +74,19 @@ public class CanvasGameplayControl : MonoBehaviour {
 	}
 
 	public void OnClickAllowUpgrade1(){
-		upGrade1but.gameObject.SetActive (true);
+		if(UnitShop.Instance.lvlUnit[0] < 3)
+			upGrade1but.gameObject.SetActive (true);
 	}
 	public void OnClickAllowUpgrade2(){
+		if(UnitShop.Instance.lvlUnit[1] < 3)
 		upGrade2but.gameObject.SetActive (true);
 	}
 	public void OnClickAllowUpgrade3(){
+		if(UnitShop.Instance.lvlUnit[2] < 3)
 		upGrade3but.gameObject.SetActive (true);
 	}
 	public void OnClickAllowUpgrade4(){
+		if(UnitShop.Instance.lvlUnit[3] < 3)
 		upGrade4but.gameObject.SetActive (true);
 	}
 

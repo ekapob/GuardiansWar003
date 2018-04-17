@@ -40,9 +40,9 @@ public class UnitShop : MonoBehaviour {
 	}
 
 	public void OnClickUpgradePos1(){
-		unit1price.text = lvlPrice [1].ToString();
-		CanvasGameplayControl.Instance.upGrade1but.gameObject.SetActive (false);
 		if (lvlUnit [0] < 3) {
+			unit1price.text = lvlPrice [1].ToString();
+			CanvasGameplayControl.Instance.upGrade1but.gameObject.SetActive (false);
 			CameraController.Instance.UpgradeUnit (1, MotherScript.Instance.currentGameSide);
 			lvlUnit [0]++;
 			if (lvlUnit [0] == 3)
@@ -51,9 +51,9 @@ public class UnitShop : MonoBehaviour {
 		}
 	}
 	public void OnClickUpgradePos2(){
-		unit2price.text = lvlPrice [1].ToString();
-		CanvasGameplayControl.Instance.upGrade2but.gameObject.SetActive (false);
 		if (lvlUnit [1] < 3) {
+			unit2price.text = lvlPrice [1].ToString();
+			CanvasGameplayControl.Instance.upGrade2but.gameObject.SetActive (false);
 			CameraController.Instance.UpgradeUnit (2, MotherScript.Instance.currentGameSide);
 			lvlUnit [1]++;
 			if (lvlUnit [1] == 3)
@@ -62,9 +62,9 @@ public class UnitShop : MonoBehaviour {
 		}
 	}
 	public void OnClickUpgradePos3(){
-		unit3price.text = lvlPrice [1].ToString();
-		CanvasGameplayControl.Instance.upGrade3but.gameObject.SetActive (false);
 		if (lvlUnit [2] < 3) {
+			unit3price.text = lvlPrice [1].ToString();
+			CanvasGameplayControl.Instance.upGrade3but.gameObject.SetActive (false);
 			CameraController.Instance.UpgradeUnit (3, MotherScript.Instance.currentGameSide);
 			lvlUnit [2]++;
 			if (lvlUnit [2] == 3)
@@ -73,9 +73,9 @@ public class UnitShop : MonoBehaviour {
 		}
 	}
 	public void OnClickUpgradePos4(){
-		unit4price.text = lvlPrice [1].ToString();
-		CanvasGameplayControl.Instance.upGrade4but.gameObject.SetActive (false);
 		if (lvlUnit [3] < 3) {
+			unit4price.text = lvlPrice [1].ToString();
+			CanvasGameplayControl.Instance.upGrade4but.gameObject.SetActive (false);
 			CameraController.Instance.UpgradeUnit (4, MotherScript.Instance.currentGameSide);
 			lvlUnit [3]++;
 			if (lvlUnit [3] == 3) 

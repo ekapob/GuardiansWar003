@@ -9,8 +9,12 @@ public class Enemy : Photon.MonoBehaviour {
 
 	//-----
 
+	public int pos;
 	private Transform target;
 	private PhotonView PhotonView;
+
+	[SerializeField]
+	private GameObject secondTag;
 
 
 	private float range = 2.5f;
@@ -26,17 +30,18 @@ public class Enemy : Photon.MonoBehaviour {
 
 	//-----
 
-	public float startSpeed = 10f;
+	public float startSpeed;
 	public float speed;
 
-	public float startHealth = 100;
+	public float startHealth;
 	public float currentHealth;
 
 	public int worth = 50;
 
 	public Image healthBar;
-	public float size;
 	public Animator enemyAnim;
+	public P1EnemyMovement moveScript1;
+	public P2EnemyMovement moveScript2;
 
 
 	void Start()
@@ -46,7 +51,6 @@ public class Enemy : Photon.MonoBehaviour {
 		PhotonView = GetComponent<PhotonView> ();
 
 		speed = startSpeed;
-		transform.localScale *= size;
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
 
@@ -107,9 +111,13 @@ public class Enemy : Photon.MonoBehaviour {
 	public void TakeDamage(float amount)
 	{
 		float healthCheck = currentHealth - amount;
-		if (healthCheck <= 0)
-			PlayerStats.Money += worth;
-		photonView.RPC ("RPC_Health", PhotonTargets.All,amount); 
+		if (healthCheck <= 0f) {
+			if (secondTag.tag == MotherScript.Instance.currentGameSide.ToString ()) {
+				PlayerStats.Money += worth;
+			}
+			photonView.RPC ("RPC_Die", PhotonTargets.All); 
+		}
+		photonView.RPC ("RPC_Health", PhotonTargets.All, amount); 
 	}
 
 	public void Slow (float pct)
@@ -120,6 +128,10 @@ public class Enemy : Photon.MonoBehaviour {
 	[PunRPC]
 	private void RPC_Die()
 	{
+		if (moveScript1 != null) 
+			moveScript1.DontMove ();
+		else 
+			moveScript2.DontMove ();
 		enemyAnim.Play ("Death", -1, 0f);
 		Invoke ("Die",1.25f);
 	}
@@ -127,19 +139,10 @@ public class Enemy : Photon.MonoBehaviour {
 	[PunRPC]
 	private void RPC_Health(float dam){
 		currentHealth -= dam;
-		healthBar.fillAmount = currentHealth/startHealth;
-		if (currentHealth <= 0) {
-			photonView.RPC ("RPC_Die", PhotonTargets.All); 
-		}
+		healthBar.fillAmount = currentHealth / startHealth;
 	}
 
 	void Die(){
 		PhotonView.Destroy(gameObject);
-	}
-
-	public void SetStat(float baseHealth,float baseSpeed,float baseSize){
-		startHealth = baseHealth;
-		startSpeed = baseSpeed;
-		size = baseSize;
 	}
 }
