@@ -15,15 +15,24 @@ public class Shop : MonoBehaviour {
 		
 	public void SelectStdTurret()
 	{
-		buildManager.SelectTurretToBuild (stdTurret,"Turret");
+		if(PlayerStats.Money >= 100)
+			buildManager.SelectTurretToBuild (stdTurret,"Turret");
+		else
+			PauseAndExitButton.Instance.RunNoGold ();
 	}
 
 	public void SelectMisTurret()
 	{
-		buildManager.SelectTurretToBuild (misTurret,"MissileLauncher");
+		if(PlayerStats.Money >= 500)
+			buildManager.SelectTurretToBuild (misTurret,"MissileLauncher");
+		else
+			PauseAndExitButton.Instance.RunNoGold ();
 	}
 	public void SelectLasTurret()
 	{
-		buildManager.SelectTurretToBuild (lasTurret,"LaserBeamer");
+		if (PlayerStats.Money >= 225)
+			buildManager.SelectTurretToBuild (lasTurret, "LaserBeamer");
+		else
+			PauseAndExitButton.Instance.RunNoGold ();
 	}
 }

@@ -6,6 +6,8 @@ using System.IO;
 public class Turret : Photon.MonoBehaviour {
 
 	private Transform target;
+	[SerializeField]
+	private int turretCost;
 	private PhotonView PhotonView;
 	public bool UseTransformView = true;
 	private Vector3 TargetPosition;
@@ -13,6 +15,8 @@ public class Turret : Photon.MonoBehaviour {
 	public int onNode;
 	public GameObject turretUI;
 	public GameObject upGradePrefab;
+	public Text costToUpgradetxt;
+	public Text costToSelltxt;
 
 	[Header("General")]
 
@@ -44,10 +48,15 @@ public class Turret : Photon.MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (upGradePrefab != null) {
+			Turret upPrefScript = upGradePrefab.GetComponent<Turret> ();
+			costToUpgradetxt.text = upPrefScript.GetCost ().ToString (); 
+		} else {
+			costToUpgradetxt.gameObject.SetActive (false);
+		}
+		costToSelltxt.text = (turretCost / 3).ToString();
 		turretUI.SetActive (false);
 		onNode = CameraController.Instance.currentClickNode;
-		/*if (!photonView.isMine)
-			gameObject.SetActive (false);*/
 		PhotonView = GetComponent<PhotonView> ();
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
@@ -177,6 +186,7 @@ public class Turret : Photon.MonoBehaviour {
 
 	public void OnClickSell(){
 		if (photonView.isMine) {
+			PlayerStats.Money += turretCost / 3;
 			if (MotherScript.Instance.currentGameSide == 1) {
 				TestNode node = TestNode1.Instance.node [onNode];
 				node.SetNodeToNull ();
@@ -197,17 +207,27 @@ public class Turret : Photon.MonoBehaviour {
 	}
 
 	public void OnClickUpgrade(){
-		GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", upGradePrefab.name), transform.position, transform.rotation, 0);	
-		Turret objScript = objTurret.GetComponent<Turret> ();
-		if (MotherScript.Instance.currentGameSide == 1) {	
-			TestNode1.Instance.node [onNode].SetTurret (objTurret, objScript);
+		Turret upPrefScript = upGradePrefab.GetComponent<Turret> ();
+		if (PlayerStats.Money >= upPrefScript.GetCost()) {
+			PlayerStats.Money -= upPrefScript.GetCost ();
+			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", upGradePrefab.name), transform.position, transform.rotation, 0);	
+			Turret objScript = objTurret.GetComponent<Turret> ();
+			if (MotherScript.Instance.currentGameSide == 1) {	
+				TestNode1.Instance.node [onNode].SetTurret (objTurret, objScript);
+			} else if (MotherScript.Instance.currentGameSide == 2) {	
+				TestNode2.Instance.node [onNode].SetTurret (objTurret, objScript);
+			}
+			PhotonNetwork.Destroy (gameObject);
+		} else {
+			PauseAndExitButton.Instance.RunNoGold ();
 		}
-		else if (MotherScript.Instance.currentGameSide == 2) {	
-			TestNode2.Instance.node [onNode].SetTurret (objTurret, objScript);
-		}
-		PhotonNetwork.Destroy (gameObject);
+
 	}
 	public void OnClickCloseCanvas(){
 		turretUI.gameObject.SetActive (false);
+	}
+
+	public int GetCost(){
+		return turretCost;
 	}
 }

@@ -21,7 +21,6 @@ public class CameraController : Photon.MonoBehaviour {
 	public int currentClickNode;
 
 	void Start (){
-		Debug.Log ("Master : " + PhotonNetwork.isMasterClient);
 		Instance = this;
 		PhotonView = GetComponent<PhotonView> ();
 		CanvasGameplayControl.Instance.loadingImg.SetActive (false);
@@ -41,16 +40,16 @@ public class CameraController : Photon.MonoBehaviour {
 		if (!doMovement)
 			return;
 
-		if (Input.GetKey ("w") /*|| Input.GetKey (KeyCode.UpArrow)/*|| Input.mousePosition.y >= Screen.height - panBorderThickness*/) {
+		if (Input.GetKey ("w") || Input.GetKey (KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness) {
 			transform.Translate (Vector3.forward * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey ("s") /*|| Input.GetKey (KeyCode.DownArrow)|| Input.mousePosition.y <= panBorderThickness*/) {
+		if (Input.GetKey ("s") || Input.GetKey (KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness) {
 			transform.Translate (Vector3.back * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey ("d") /*|| Input.GetKey (KeyCode.RightArrow)|| Input.mousePosition.x >= Screen.width - panBorderThickness*/) {
+		if (Input.GetKey ("d") || Input.GetKey (KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness) {
 			transform.Translate (Vector3.right * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey ("a") /*|| Input.GetKey (KeyCode.LeftArrow)|| Input.mousePosition.x <= panBorderThickness*/) {
+		if (Input.GetKey ("a") || Input.GetKey (KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness) {
 			transform.Translate (Vector3.left * panSpeed * Time.deltaTime, Space.World);
 		}
 
@@ -89,11 +88,15 @@ public class CameraController : Photon.MonoBehaviour {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode1.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
 			Turret objScript = objTurret.GetComponent<Turret> ();
 			TestNode1.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
+			int cost = objScript.GetCost ();
+			PlayerStats.Money -= cost;
 		}
 		else if (MotherScript.Instance.currentGameSide == 2) {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode2.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
 			Turret objScript = objTurret.GetComponent<Turret> ();
 			TestNode2.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
+			int cost = objScript.GetCost ();
+			PlayerStats.Money -= cost;
 		}
 	}
 

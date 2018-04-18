@@ -9,10 +9,12 @@ public class PauseAndExitButton : MonoBehaviour {
 	public GameObject allButton;
 	public GameObject exitButton;
 	public bool pause;
+	public GameObject notEnoughGold;
 	// Use this for initialization
 	void Start () {
 		Instance = this;
 		pause = false;
+		notEnoughGold.SetActive (false);
 	}
 
 	public void OnClickPauseSelect(){
@@ -23,5 +25,16 @@ public class PauseAndExitButton : MonoBehaviour {
 	public void OnClickExitPause(){
 		allButton.SetActive (false);
 		pause = false;
+	}
+
+	IEnumerator NoGold(){
+		notEnoughGold.SetActive (true);
+		yield return new WaitForSeconds (3f);
+		notEnoughGold.SetActive (false);
+
+	}
+
+	public void RunNoGold(){
+		StartCoroutine (NoGold ());
 	}
 }

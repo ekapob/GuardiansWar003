@@ -12,12 +12,16 @@ public class StartAnimation : MonoBehaviour {
 	int frameSize;
 	Scene m_Scene;
 	bool runframe = true;
+	private float timer;
 
 	void Start () {
+		//timer = 0f;
 		m_Scene = SceneManager.GetActiveScene ();
 	}
 	// Update is called once per frame
 	void Update () {
+		//Debug.Log (timer);
+		//timer += Time.deltaTime;
 		int index = (int)(Time.time * fps) % frames.Length;
 		if (!runframe)
 			index = 109;
