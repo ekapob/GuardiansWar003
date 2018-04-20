@@ -6,6 +6,7 @@ using System.IO;
 public class CameraController : Photon.MonoBehaviour {
 
 	public static CameraController Instance;
+	public GameObject thisCam;
 	private bool doMovement = true;
 	public float panSpeed = 30f;
 	public float panBorderThickness = 10f;
@@ -40,16 +41,16 @@ public class CameraController : Photon.MonoBehaviour {
 		if (!doMovement)
 			return;
 
-		if (Input.GetKey ("w") || Input.GetKey (KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness) {
+		if (Input.GetKey ("w") || Input.GetKey (KeyCode.UpArrow)/* || Input.mousePosition.y >= Screen.height - panBorderThickness*/) {
 			transform.Translate (Vector3.forward * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey ("s") || Input.GetKey (KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness) {
+		if (Input.GetKey ("s") || Input.GetKey (KeyCode.DownArrow)/* || Input.mousePosition.y <= panBorderThickness*/) {
 			transform.Translate (Vector3.back * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey ("d") || Input.GetKey (KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness) {
+		if (Input.GetKey ("d") || Input.GetKey (KeyCode.RightArrow)/* || Input.mousePosition.x >= Screen.width - panBorderThickness*/) {
 			transform.Translate (Vector3.right * panSpeed * Time.deltaTime, Space.World);
 		}
-		if (Input.GetKey ("a") || Input.GetKey (KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness) {
+		if (Input.GetKey ("a") || Input.GetKey (KeyCode.LeftArrow)/* || Input.mousePosition.x <= panBorderThickness*/) {
 			transform.Translate (Vector3.left * panSpeed * Time.deltaTime, Space.World);
 		}
 
@@ -107,7 +108,6 @@ public class CameraController : Photon.MonoBehaviour {
 		if (side == 2) {
 			photonView.RPC ("RPC_KniUpgradeUnit", PhotonTargets.MasterClient, pos);
 		}
-		
 	}
 
 	[PunRPC]
@@ -117,5 +117,9 @@ public class CameraController : Photon.MonoBehaviour {
 	[PunRPC]
 	private void RPC_MonUpgradeUnit(int pos){
 		P2Spawner.Instance.UpgradeUnit (pos);
+	}
+
+	public void MoveToPos(Transform winPos){
+		transform.position = winPos.position;
 	}
 }

@@ -75,7 +75,6 @@ public class PlayerNetwork : MonoBehaviour {
 	private void MasterLoadedGamePlay(){
 		PhotonView.RPC ("RPC_LoadedGamePlayScene", PhotonTargets.MasterClient,PhotonNetwork.player);
 		PhotonView.RPC ("RPC_LoadGamePlayOther", PhotonTargets.Others);
-		//PhotonView.RPC ("RPC_SendSideGameplay",PhotonTargets.All);
 	}
 	//Scene 3
 	private void NonMasterLoadedGame(){
@@ -101,7 +100,6 @@ public class PlayerNetwork : MonoBehaviour {
 	//Scene 3
 	[PunRPC]
 	private void RPC_LoadedGameScene(PhotonPlayer photonPlayer){
-		//PlayerManagement.Instance.AddPlayerStats (photonPlayer);
 		PlayersInGame++;
 		if (PlayersInGame == PhotonNetwork.playerList.Length) {
 			print ("All player are in the game scene.");
@@ -111,7 +109,6 @@ public class PlayerNetwork : MonoBehaviour {
 	//Scene 4
 	[PunRPC]
 	private void RPC_LoadedGamePlayScene(PhotonPlayer photonPlayer){
-		//PlayerManagement.Instance.AddPlayerStats (photonPlayer);
 		PlayersInGame++;
 		if (PlayersInGame == PhotonNetwork.playerList.Length) {
 			print ("All player are in the game scene.");
@@ -133,10 +130,6 @@ public class PlayerNetwork : MonoBehaviour {
 		GameObject obj =  PhotonNetwork.Instantiate (Path.Combine ("Prefabs", "PlayerCamera"), PauseAndExitButton.Instance.camSpawnPoint.transform.position,rotate, 0);
 	}
 
-
-
-
-		
 	private IEnumerator C_SetPing(){
 		while(PhotonNetwork.connected){
 			m_playerCustomProperties ["Ping"] = PhotonNetwork.GetPing ();
@@ -147,7 +140,6 @@ public class PlayerNetwork : MonoBehaviour {
 
 		yield break;
 	}
-
 
 	private void OnConnectedToMaster(){
 		if (m_pingCoroutine != null) {

@@ -7,9 +7,8 @@ public class CoreScript : MonoBehaviour {
 
 	public float coreHealth;
 	public float coreCurrentHealth;
-
 	public GameObject winPopUp;
-
+	public Transform winPos;
 	public Image coreHealthBar;
 
 	void Start () 
@@ -27,8 +26,19 @@ public class CoreScript : MonoBehaviour {
 
 	void Die()
 	{
+		//CameraController.Instance.MoveToPos (winPos);
+		Destroy (gameObject);
 		winPopUp.SetActive (true);
 		//----------------------------------------------------------
-		Destroy (gameObject);
 	}
+
+	//edit
+	/*void OnTriggerEnter(Collider other) {
+		if (other.tag == "Enemy") {
+			Enemy dmgScript = other.GetComponent <Enemy>();
+			CoreTakeDamage (dmgScript.GetDmg());
+			PhotonNetwork.Destroy (other.gameObject);
+		}
+	}*/
+
 }

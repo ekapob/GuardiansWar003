@@ -52,6 +52,7 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 						}
 						photonView.RPC ("RPC_SendMode", PhotonTargets.All,mode); 
 						photonView.RPC ("RPC_SendSide", PhotonTargets.All,CanvasGameButton.Instance.sidePlayer); 
+						//Load Mode
 						PhotonNetwork.LoadLevel (4);
 					}
 					CanvasGameButton.Instance.clockCount.text = mode.ToString();
@@ -176,7 +177,6 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 			CanvasGameButton.Instance.monBut.interactable = false;
 		}
 	}
-
 
 	[PunRPC]
 	private void RPC_SendMode(int gameMode){

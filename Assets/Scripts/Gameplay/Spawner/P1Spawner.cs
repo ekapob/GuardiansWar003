@@ -19,7 +19,7 @@ public class P1Spawner : Photon.MonoBehaviour {
 	public Transform spawnPoint;
 
 	public float timeBetweenWaves = 5f;
-	private float countdown = 30f;
+	private float countdown = 45f;
 
 	public Text waveCountdownText;
 

@@ -52,7 +52,6 @@ public class TestNode : MonoBehaviour {
 
 	public void OnMouseExit(){
 		rend.material.color = startColor;
-		//turretScript.turretUI.SetActive (false);
 	}
 
 	public void SetTurret(GameObject obj,Turret script){
@@ -66,6 +65,17 @@ public class TestNode : MonoBehaviour {
 
 	public Turret GetTurretOnNode(){
 		return turretScript;
+	}
+
+	public string GetTurretName(){
+		if (turret == null) {
+			return null;
+		}
+		return turret.name;
+	}
+
+	public int GetNodeNo(){
+		return nodeNo;
 	}
 
 }

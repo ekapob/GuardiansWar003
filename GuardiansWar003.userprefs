@@ -1,27 +1,31 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Gameplay\Turret.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Gameplay\Enemy.cs">
     <Files>
-      <File FileName="Assets\Scripts\Test\TestNode.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Networks\PlayerNetwork.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Test\TestNode.cs" Line="78" Column="17" />
+      <File FileName="Assets\Scripts\Networks\PlayerNetwork.cs" Line="80" Column="19" />
       <File FileName="Assets\Scripts\Gameplay\Bullet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Gameplay\PlayerStats.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\SelectScene\PlayerSoulChooseScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SelectScene\PlayerSoulChooseScript.cs" Line="179" Column="3" />
       <File FileName="Assets\Scripts\Extra\CanvasGameButton.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MotherScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FirstSceneScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GIF\StartAnimation.cs" Line="15" Column="22" />
-      <File FileName="Assets\Scripts\Gameplay\UnitShop.cs" Line="45" Column="26" />
-      <File FileName="Assets\Scripts\Gameplay\CameraController.cs" Line="95" Column="50" />
-      <File FileName="Assets\Scripts\Gameplay\Canvas\CanvasGameplayControl.cs" Line="83" Column="3" />
-      <File FileName="Assets\Scripts\Gameplay\EnemyMovements\P2EnemyMovement.cs" Line="16" Column="23" />
+      <File FileName="Assets\Scripts\GIF\StartAnimation.cs" Line="22" Column="18" />
+      <File FileName="Assets\Scripts\Gameplay\PlayerStats.cs" Line="22" Column="27" />
+      <File FileName="Assets\Scripts\Gameplay\UnitShop.cs" Line="52" Column="48" />
+      <File FileName="Assets\Scripts\Gameplay\Canvas\CanvasGameplayControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gameplay\EnemyMovements\P2EnemyMovement.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Gameplay\EnemyMovements\P1EnemyMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Gameplay\Enemy.cs" Line="38" Column="2" />
-      <File FileName="Assets\Scripts\Gameplay\Spawner\P1Spawner.cs" Line="48" Column="23" />
-      <File FileName="Assets\Scripts\Gameplay\Spawner\P2Spawner.cs" Line="80" Column="1" />
-      <File FileName="Assets\Scripts\Extra\PauseAndExitButton.cs" Line="30" Column="2" />
-      <File FileName="Assets\Scripts\Gameplay\Turret.cs" Line="55" Column="50" />
-      <File FileName="Assets\Scripts\Gameplay\Shop.cs" Line="35" Column="7" />
+      <File FileName="Assets\Scripts\Gameplay\Spawner\P1Spawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gameplay\Spawner\P2Spawner.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Extra\PauseAndExitButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gameplay\Turret.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gameplay\Shop.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Story\Credit.cs" Line="39" Column="26" />
+      <File FileName="Assets\Scripts\Story\StoryButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gameplay\Enemy.cs" Line="122" Column="33" />
+      <File FileName="Assets\Scripts\Gameplay\CoreScript.cs" Line="26" Column="2" />
+      <File FileName="Assets\Scripts\Gameplay\CameraController.cs" Line="115" Column="40" />
+      <File FileName="Assets\Scripts\Gameplay\EndGamePause.cs" Line="115" Column="45" />
+      <File FileName="Assets\Scripts\MotherScript.cs" Line="26" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

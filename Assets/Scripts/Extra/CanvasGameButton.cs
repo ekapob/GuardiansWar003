@@ -58,6 +58,9 @@ public class CanvasGameButton : MonoBehaviour {
 		kickKeyLock = false;
 		playMode = 0;
 		playSide = 0;
+		if (PhotonNetwork.playerList.Length > 2) {
+			mode1But.interactable = false;
+		}
 	}
 
 	// Update is called once per frame

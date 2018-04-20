@@ -12,6 +12,8 @@ public class Enemy : Photon.MonoBehaviour {
 	public int pos;
 	private Transform target;
 	private PhotonView PhotonView;
+	[SerializeField]
+	private int unitDamage;
 
 	[SerializeField]
 	private GameObject secondTag;
@@ -42,10 +44,13 @@ public class Enemy : Photon.MonoBehaviour {
 	public Animator enemyAnim;
 	public P1EnemyMovement moveScript1;
 	public P2EnemyMovement moveScript2;
+	private bool getMoney;
+
 
 
 	void Start()
 	{
+		getMoney = true;
 		manager = Manager.instance;
 		currentHealth = startHealth;
 		PhotonView = GetComponent<PhotonView> ();
@@ -113,7 +118,10 @@ public class Enemy : Photon.MonoBehaviour {
 		float healthCheck = currentHealth - amount;
 		if (healthCheck <= 0f) {
 			if (secondTag.tag == MotherScript.Instance.currentGameSide.ToString ()) {
-				PlayerStats.Money += worth;
+				if (getMoney) {
+					PlayerStats.Money += worth;
+					getMoney = false;
+				}
 			}
 			photonView.RPC ("RPC_Die", PhotonTargets.All); 
 		}
@@ -128,6 +136,7 @@ public class Enemy : Photon.MonoBehaviour {
 	[PunRPC]
 	private void RPC_Die()
 	{
+		gameObject.tag = "SideRand";
 		if (moveScript1 != null) 
 			moveScript1.DontMove ();
 		else 
@@ -144,5 +153,8 @@ public class Enemy : Photon.MonoBehaviour {
 
 	void Die(){
 		PhotonView.Destroy(gameObject);
+	}
+	public int GetDmg(){
+		return unitDamage;
 	}
 }

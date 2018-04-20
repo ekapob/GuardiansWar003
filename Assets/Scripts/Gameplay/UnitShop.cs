@@ -52,7 +52,6 @@ public class UnitShop : MonoBehaviour {
 				unitLvl [0].text = lvlUnit [0].ToString ();
 			}
 		} else {
-			Debug.Log ("Nogold1");
 			PauseAndExitButton.Instance.RunNoGold ();
 		}
 	}
@@ -69,7 +68,6 @@ public class UnitShop : MonoBehaviour {
 				unitLvl [1].text = lvlUnit [1].ToString ();
 			}
 		} else {
-			Debug.Log ("Nogold2");
 			PauseAndExitButton.Instance.RunNoGold ();
 		}
 	}
@@ -86,7 +84,6 @@ public class UnitShop : MonoBehaviour {
 				unitLvl [2].text = lvlUnit [2].ToString ();
 			}
 		} else {
-			Debug.Log ("Nogold3");
 			PauseAndExitButton.Instance.RunNoGold ();
 		}
 	}
@@ -103,7 +100,6 @@ public class UnitShop : MonoBehaviour {
 				unitLvl [3].text = lvlUnit [3].ToString ();
 			}
 		} else {
-			Debug.Log ("Nogold4");
 			PauseAndExitButton.Instance.RunNoGold ();
 		}
 	}

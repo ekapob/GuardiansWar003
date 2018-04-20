@@ -12,6 +12,22 @@ public class MotherScript : MonoBehaviour {
 	public float soundSfx;
 	public int currentGameMode;
 	public int currentGameSide;
+	[Header("Battle Log")]
+	public int[] playerLog;
+	//0. - tw1 lv.1
+	//1. - tw1 lv.2
+	//2 - tw1 lv.3
+	//3. - tw2 lv.1
+	//4. - tw2 lv.2
+	//5 - tw2 lv.3
+	//6. - tw3 lv.1
+	//7. - tw3 lv.2
+	//8 - tw3 lv.3
+	//9 - lv unit no.1
+	//10 - lv unit no.2
+	//11 - lv unit no.3
+	//12 - lv unit no.4
+
 	// Use this for initialization
 	void Start () {
 		currentGameMode = 0;
