@@ -243,6 +243,7 @@
      <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
      <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
      <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
+     <Compile Include="Assets\Scripts\BattleLogScene\BattleLogTxt.cs" />
      <Compile Include="Assets\Scripts\BattleLogScene\LogCanvasScript.cs" />
      <Compile Include="Assets\Scripts\BattleLogScene\MotherLogScript.cs" />
      <Compile Include="Assets\Scripts\Chat\LobbyChat.cs" />
