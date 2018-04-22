@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour {
 
 	public static PlayerStats Instance;
+	public bool endGameStat;
 	public static int Money;
 	public int startMoney = 1000;
 	[Header("Tower 1")]
@@ -24,6 +25,7 @@ public class PlayerStats : MonoBehaviour {
 
 	void Start()
 	{
+		endGameStat = false;
 		Instance = this;
 		Money = startMoney;
 	}

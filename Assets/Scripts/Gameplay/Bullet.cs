@@ -21,6 +21,10 @@ public class Bullet : Photon.MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		if (PlayerStats.Instance.endGameStat)
+			PhotonNetwork.Destroy (gameObject);
+
 		if (target == null) {
 			Destroy (gameObject);
 			return;

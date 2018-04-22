@@ -244,6 +244,7 @@
      <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
      <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
      <Compile Include="Assets\Scripts\BattleLogScene\LogCanvasScript.cs" />
+     <Compile Include="Assets\Scripts\BattleLogScene\MotherLogScript.cs" />
      <Compile Include="Assets\Scripts\Chat\LobbyChat.cs" />
      <Compile Include="Assets\Scripts\Countdown.cs" />
      <Compile Include="Assets\Scripts\CreateRoom\CreateRoom.cs" />

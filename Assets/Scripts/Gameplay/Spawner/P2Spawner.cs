@@ -19,7 +19,7 @@ public class P2Spawner : Photon.MonoBehaviour {
 	public Transform spawnPoint;
 
 	public float timeBetweenWaves = 5f;
-	private float countdown = 45f;
+	private float countdown = 15f;
 
 	public Text waveCountdownText;
 
@@ -33,14 +33,15 @@ public class P2Spawner : Photon.MonoBehaviour {
 
 	void Update()
 	{
-		if (countdown <= 0f) 
-		{
-			if(PhotonNetwork.isMasterClient)
-				StartCoroutine (SpawnWave ());
-			countdown = timeBetweenWaves;
-		}
+		if (!PlayerStats.Instance.endGameStat) {
+			if (countdown <= 0f) {
+				if (PhotonNetwork.isMasterClient)
+					StartCoroutine (SpawnWave ());
+				countdown = timeBetweenWaves;
+			}
 
-		countdown -= Time.deltaTime;
+			countdown -= Time.deltaTime;
+		}
 
 
 	}

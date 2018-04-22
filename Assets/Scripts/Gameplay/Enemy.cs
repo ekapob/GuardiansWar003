@@ -84,6 +84,9 @@ public class Enemy : Photon.MonoBehaviour {
 	}
 
 	void Update () {
+		if (PlayerStats.Instance.endGameStat) {
+			photonView.RPC ("RPC_Die", PhotonTargets.All); 
+		}
 		if (target == null) {
 			return;
 		}

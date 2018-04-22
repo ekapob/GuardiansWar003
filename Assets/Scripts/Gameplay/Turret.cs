@@ -63,59 +63,64 @@ public class Turret : Photon.MonoBehaviour {
 
 	void UpdateTarget ()
 	{
-		if (photonView.isMine) {
-			GameObject[] enemies = GameObject.FindGameObjectsWithTag (enemyTag);
-			float shortestDistance = Mathf.Infinity;
-			GameObject nearestEnemy = null;
-			foreach (GameObject enemy in enemies) {
-				float distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
-				if (distanceToEnemy < shortestDistance) {
-					shortestDistance = distanceToEnemy;
-					nearestEnemy = enemy;
+		if (!PlayerStats.Instance.endGameStat) {
+			if (photonView.isMine) {
+				GameObject[] enemies = GameObject.FindGameObjectsWithTag (enemyTag);
+				float shortestDistance = Mathf.Infinity;
+				GameObject nearestEnemy = null;
+				foreach (GameObject enemy in enemies) {
+					float distanceToEnemy = Vector3.Distance (transform.position, enemy.transform.position);
+					if (distanceToEnemy < shortestDistance) {
+						shortestDistance = distanceToEnemy;
+						nearestEnemy = enemy;
+					}
 				}
-			}
 
-			if (nearestEnemy != null && shortestDistance <= range) {
-				target = nearestEnemy.transform;
+				if (nearestEnemy != null && shortestDistance <= range) {
+					target = nearestEnemy.transform;
+				} else {
+					target = null;
+				}
 			} else {
-				target = null;
-			}
-		} else {
 
-			SmoothMove ();
+				SmoothMove ();
+			}
 		}
 
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (photonView.isMine) {
-			if (target == null) {
-				if (useLaser) {
-					if (lineRenderer.enabled) {
-						lineRenderer.enabled = false;
-						impactEffect.Stop ();
-						impactLight.enabled = false;
+
+		if (!PlayerStats.Instance.endGameStat) {
+			if (photonView.isMine) {
+				if (target == null) {
+					if (useLaser) {
+						if (lineRenderer.enabled) {
+							lineRenderer.enabled = false;
+							impactEffect.Stop ();
+							impactLight.enabled = false;
+						}
 					}
+
+					return;
 				}
 
-				return;
-			}
+				LockOnTarget ();
 
-			LockOnTarget ();
+				if (useLaser) {
+					Laser ();
+				} else {
+					if (fireCountdown <= 0f) {
+						Shoot ();
+						fireCountdown = 1f / fireRate;
+					}
 
-			if (useLaser) {
-				Laser ();
+					fireCountdown -= Time.deltaTime;
+				}
 			} else {
-				if (fireCountdown <= 0f) {
-					Shoot ();
-					fireCountdown = 1f / fireRate;
-				}
-
-				fireCountdown -= Time.deltaTime;
+				SmoothMove ();
 			}
-		} else {
-			SmoothMove ();
 		}
 	}
 

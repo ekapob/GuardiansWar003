@@ -24,27 +24,35 @@ public class TestNode : MonoBehaviour {
 
 
 	public void OnMouseEnter(){
-		if (!CanvasGameplayControl.Instance.winStat) {
-			if (turret == null) {
-				if (MotherScript.Instance.currentGameSide.ToString () == tag)
-					rend.material.color = hoverColor;
+		if (PlayerStats.Instance.endGameStat)
+			return;
+		if (!PlayerStats.Instance.endGameStat) {
+			if (!CanvasGameplayControl.Instance.winStat) {
+				if (turret == null) {
+					if (MotherScript.Instance.currentGameSide.ToString () == tag)
+						rend.material.color = hoverColor;
+				}
 			}
 		}
 	}
 
 	public void OnMouseDown(){
-		if (!CanvasGameplayControl.Instance.winStat) {
-			if (turret != null) {
-				if(MotherScript.Instance.currentGameSide.ToString () == tag)
-					turretScript.turretUI.SetActive (true);
-			} else {
-				if (Manager.instance.buildName == null) {
-					return;
-				}
-				if (MotherScript.Instance.currentGameSide.ToString () == tag) {
-					CameraController.Instance.currentClickNode = nodeNo;
-					CameraController.Instance.CreateTower (Manager.instance.buildName);
-					Manager.instance.buildName = null;
+		if (PlayerStats.Instance.endGameStat)
+			return;
+		if (!PlayerStats.Instance.endGameStat) {
+			if (!CanvasGameplayControl.Instance.winStat) {
+				if (turret != null) {
+					if (MotherScript.Instance.currentGameSide.ToString () == tag)
+						turretScript.turretUI.SetActive (true);
+				} else {
+					if (Manager.instance.buildName == null) {
+						return;
+					}
+					if (MotherScript.Instance.currentGameSide.ToString () == tag) {
+						CameraController.Instance.currentClickNode = nodeNo;
+						CameraController.Instance.CreateTower (Manager.instance.buildName);
+						Manager.instance.buildName = null;
+					}
 				}
 			}
 		}

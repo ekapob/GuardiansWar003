@@ -8,6 +8,7 @@ public class EndGamePause : MonoBehaviour {
 	void Start () 
 	{
 		CanvasGameplayControl.Instance.winStat = true;
+		PlayerStats.Instance.endGameStat = true;
 		//Battle Log Collect
 		// 1 - knight
 		// 2 - mon
@@ -124,6 +125,5 @@ public class EndGamePause : MonoBehaviour {
 			}
 
 		}*/
-		Time.timeScale = 0f;
 	}
 }
