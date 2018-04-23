@@ -98,6 +98,8 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 		CanvasGameButton.Instance.mode2But.gameObject.SetActive (false);
 		CanvasGameButton.Instance.kniBut.gameObject.SetActive (true);
 		CanvasGameButton.Instance.monBut.gameObject.SetActive (true);
+		CanvasGameButton.Instance.kniBut3.gameObject.SetActive (true);
+		CanvasGameButton.Instance.monBut4.gameObject.SetActive (true);
 	}
 
 	//Transfer data
@@ -122,12 +124,12 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 		photonView.RPC ("RPC_OnClickMode2", PhotonTargets.All); 
 	}
 
-	public void ClickKnight(){
-		photonView.RPC ("RPC_OnClickKnight", PhotonTargets.MasterClient,PlayerNetwork.Instance.joinRoomNum); 
+	public void ClickKnight(int side){
+		photonView.RPC ("RPC_OnClickKnight", PhotonTargets.MasterClient,PlayerNetwork.Instance.joinRoomNum,side); 
 	}
 
-	public void ClickMonster(){
-		photonView.RPC ("RPC_OnClickMonster", PhotonTargets.MasterClient,PlayerNetwork.Instance.joinRoomNum); 
+	public void ClickMonster(int side){
+		photonView.RPC ("RPC_OnClickMonster", PhotonTargets.MasterClient,PlayerNetwork.Instance.joinRoomNum,side); 
 	}
 
 	[PunRPC] 
@@ -153,16 +155,16 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 	}
 
 	[PunRPC]
-	private void RPC_OnClickKnight(int playerPos){
+	private void RPC_OnClickKnight(int playerPos,int side){
 		CanvasGameButton.Instance.knightPicked++;
-		CanvasGameButton.Instance.sidePlayer[playerPos-1] = 1;
+		CanvasGameButton.Instance.sidePlayer[playerPos-1] = side;
 		photonView.RPC ("RPC_MasterSide", PhotonTargets.All,CanvasGameButton.Instance.knightPicked,CanvasGameButton.Instance.monsterPicked); 
 	}
 
 	[PunRPC]
-	private void RPC_OnClickMonster(int playerPos){
+	private void RPC_OnClickMonster(int playerPos,int side){
 		CanvasGameButton.Instance.monsterPicked++;
-		CanvasGameButton.Instance.sidePlayer[playerPos-1] = 2;
+		CanvasGameButton.Instance.sidePlayer[playerPos-1] = side;
 		photonView.RPC ("RPC_MasterSide", PhotonTargets.All,CanvasGameButton.Instance.knightPicked,CanvasGameButton.Instance.monsterPicked); 
 	}
 
@@ -170,11 +172,15 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 	private void RPC_MasterSide(int kniPick,int monPick){
 		CanvasGameButton.Instance.knightPickedText.text = kniPick.ToString ();
 		CanvasGameButton.Instance.monsterPickedText.text = monPick.ToString ();
-		if (kniPick >= PhotonNetwork.playerList.Length/2) {
-			CanvasGameButton.Instance.kniBut.interactable = false;
+		if (kniPick > 0) {
+			CanvasGameButton.Instance.kniBut.gameObject.SetActive (false);
+			if (kniPick >= PhotonNetwork.playerList.Length/2)
+				CanvasGameButton.Instance.kniBut3.interactable = false;
 		}
-		if (monPick >= PhotonNetwork.playerList.Length/2) {
-			CanvasGameButton.Instance.monBut.interactable = false;
+		if (monPick > 0) {
+			CanvasGameButton.Instance.monBut.gameObject.SetActive (false);
+			if (monPick >= PhotonNetwork.playerList.Length/2)
+				CanvasGameButton.Instance.monBut4.interactable = false;
 		}
 	}
 

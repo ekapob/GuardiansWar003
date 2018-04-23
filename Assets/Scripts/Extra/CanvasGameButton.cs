@@ -32,6 +32,8 @@ public class CanvasGameButton : MonoBehaviour {
 	public Button mode2But;
 	public Button kniBut;
 	public Button monBut;
+	public Button kniBut3;
+	public Button monBut4;
 	public Texture2D[] sidePic = new Texture2D[2];
 	public RawImage sidePicChoose;
 	public Text knightPickedText;
@@ -42,6 +44,7 @@ public class CanvasGameButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		Instance = this;
 		knightPicked = 0;
 		monsterPicked = 0;
 		sidePicChoose.gameObject.SetActive (false);
@@ -50,7 +53,6 @@ public class CanvasGameButton : MonoBehaviour {
 		clockCount.text = timeToStr.ToString ();
 		pause = false;
 		allButton.SetActive (false);
-		Instance = this;
 		showButtonState = false;
 		connectCamera.SetActive (true);
 		limitPlayer = PhotonNetwork.playerList.Length;
@@ -104,21 +106,25 @@ public class CanvasGameButton : MonoBehaviour {
 		}
 	}
 
-	public void OnClickMonster(){
+	public void OnClickMonster(int side){
 		sidePicChoose.gameObject.SetActive (true);
 		sidePicChoose.texture = sidePic [1];
 		kniBut.interactable = false;//kni
+		kniBut3.interactable = false;
 		monBut.interactable = false;//mon
-		PlayerSoulChooseScript.Instance.ClickMonster ();
+		monBut4.interactable = false;
+		PlayerSoulChooseScript.Instance.ClickMonster (side);
 
 	}
 
-	public void OnClickKnight(){
+	public void OnClickKnight(int side){
 		sidePicChoose.gameObject.SetActive (true);
 		sidePicChoose.texture = sidePic [0];
-		kniBut.interactable = false;
-		monBut.interactable = false;
-		PlayerSoulChooseScript.Instance.ClickKnight ();
+		kniBut.interactable = false;//kni
+		kniBut3.interactable = false;
+		monBut.interactable = false;//mon
+		monBut4.interactable = false;
+		PlayerSoulChooseScript.Instance.ClickKnight (side);
 
 	}
 

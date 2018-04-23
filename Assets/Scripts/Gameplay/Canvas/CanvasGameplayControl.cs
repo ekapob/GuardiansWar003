@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CanvasGameplayControl : MonoBehaviour {
 
 	public static CanvasGameplayControl Instance;
+	public GameObject gameMaster;
 	public GameObject standbyCam;
 	private int allPlayerInGame;
 	public GameObject loadingImg;

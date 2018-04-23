@@ -24,7 +24,6 @@ public class CameraController : Photon.MonoBehaviour {
 	void Start (){
 		Instance = this;
 		PhotonView = GetComponent<PhotonView> ();
-		CanvasGameplayControl.Instance.loadingImg.SetActive (false);
 		turretToBuildx = standardTurretPrefabx;
 	}
 	void Update ()

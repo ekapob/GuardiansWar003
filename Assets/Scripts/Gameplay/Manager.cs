@@ -6,12 +6,12 @@ public class Manager : MonoBehaviour {
 
 	void Awake ()
 	{
-		buildName = null;
 		if (instance != null) 
 		{
 			return;
 		}
 		instance = this;
+		buildName = null;
 	}
 
 	private TurretBlueprint turretToBuild;
