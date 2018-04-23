@@ -12,6 +12,8 @@ public class EndGamePause : MonoBehaviour {
 		//Battle Log Collect
 		// 1 - knight
 		// 2 - mon
+		// 3 - kni
+		// 4 - mon
 		if (MotherScript.Instance.currentGameSide == 1) {
 			foreach (TestNode node in TestNode1.Instance.node) {
 				if (node.GetTurretName() != null) {
@@ -125,5 +127,35 @@ public class EndGamePause : MonoBehaviour {
 			}
 
 		}*/
+		/*BattleLogTxt playerLog = MotherLogScript.Instance.battleLogScript [MotherScript.Instance.currentGameSide-1];
+		playerLog.SetTxt (0,MotherScript.Instance.inGameName);
+		playerLog.SetTxt (1,MotherScript.Instance.playerLog[0].ToString());
+		playerLog.SetTxt (2,MotherScript.Instance.playerLog[1].ToString());
+		playerLog.SetTxt (3,MotherScript.Instance.playerLog[2].ToString());
+		playerLog.SetTxt (4,MotherScript.Instance.playerLog[3].ToString());
+		playerLog.SetTxt (5,MotherScript.Instance.playerLog[4].ToString());
+		playerLog.SetTxt (6,MotherScript.Instance.playerLog[5].ToString());
+		playerLog.SetTxt (7,MotherScript.Instance.playerLog[6].ToString());
+		playerLog.SetTxt (8,MotherScript.Instance.playerLog[7].ToString());
+		playerLog.SetTxt (9,MotherScript.Instance.playerLog[8].ToString());
+		playerLog.SetTxt (10,MotherScript.Instance.playerLog[9].ToString());
+		playerLog.SetTxt (11,MotherScript.Instance.playerLog[10].ToString());
+		playerLog.SetTxt (12,MotherScript.Instance.playerLog[11].ToString());
+		playerLog.SetTxt (13,MotherScript.Instance.playerLog[12].ToString());*/
+		PlayerNetwork.Instance.setLogText (MotherScript.Instance.currentGameSide-1
+			,MotherScript.Instance.inGameName
+			,MotherScript.Instance.playerLog[0].ToString()
+			,MotherScript.Instance.playerLog[1].ToString()
+			,MotherScript.Instance.playerLog[2].ToString()
+			,MotherScript.Instance.playerLog[3].ToString()
+			,MotherScript.Instance.playerLog[4].ToString()
+			,MotherScript.Instance.playerLog[5].ToString()
+			,MotherScript.Instance.playerLog[6].ToString()
+			,MotherScript.Instance.playerLog[7].ToString()
+			,MotherScript.Instance.playerLog[8].ToString()
+			,MotherScript.Instance.playerLog[9].ToString()
+			,MotherScript.Instance.playerLog[10].ToString()
+			,MotherScript.Instance.playerLog[11].ToString()
+			,MotherScript.Instance.playerLog[12].ToString());
 	}
 }

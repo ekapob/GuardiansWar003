@@ -5,17 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LogCanvasScript : MonoBehaviour {
 	public GameObject battleLog;
+	public GameObject logPos;
 	// Use this for initialization
 	void Start () {
-		battleLog.SetActive (false);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	public void OnClickShowBattleLog(){
-		battleLog.SetActive (true);
+		battleLog.transform.position = logPos.transform.position;
 	}
 }

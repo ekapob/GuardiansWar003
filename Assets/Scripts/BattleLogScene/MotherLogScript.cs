@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class MotherLogScript : MonoBehaviour {
 
 	public static MotherLogScript Instance;
-	public Text[] pTxt;
 	public BattleLogTxt[] battleLogScript;
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < PhotonNetwork.playerList.Length - 1; i++) {
+		Instance = this;
+		Debug.Log (PhotonNetwork.playerList.Length);
+		for (int i = 0; i < PhotonNetwork.playerList.Length; i++) {
 			battleLogScript [i].SetAvtiveLog ();
 		}
 	}

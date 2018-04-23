@@ -22,4 +22,8 @@ public class BattleLogTxt : MonoBehaviour {
 	public void SetAvtiveLog(){
 		gameObject.SetActive (true);
 	}
+
+	public void SetTxt(int i,string word){
+		textLog [i].text = word;
+	}
 }

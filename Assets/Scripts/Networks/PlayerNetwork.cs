@@ -147,4 +147,27 @@ public class PlayerNetwork : MonoBehaviour {
 		}
 		m_pingCoroutine = StartCoroutine (C_SetPing ());
 	}
+
+	public void setLogText(int pos,string name,string tw1lv1,string tw1lv2,string tw1lv3,string tw2lv1,string tw2lv2,string tw2lv3,string tw3lv1,string tw3lv2,string tw3lv3,string unit1,string unit2,string unit3,string unit4){
+		PhotonView.RPC ("RPC_SetLogTxt",PhotonTargets.All,pos,name,tw1lv1,tw1lv2,tw1lv3,tw2lv1,tw2lv2,tw2lv3,tw3lv1,tw3lv2,tw3lv3,unit1,unit2,unit3,unit4);
+	}
+		
+	[PunRPC]
+	public void RPC_SetLogTxt(int pos,string name,string tw1lv1,string tw1lv2,string tw1lv3,string tw2lv1,string tw2lv2,string tw2lv3,string tw3lv1,string tw3lv2,string tw3lv3,string unit1,string unit2,string unit3,string unit4){
+		BattleLogTxt playerLog = MotherLogScript.Instance.battleLogScript [pos];
+		playerLog.SetTxt(0,name);
+		playerLog.SetTxt(1,tw1lv1);
+		playerLog.SetTxt(2,tw1lv2);
+		playerLog.SetTxt(3,tw1lv3);
+		playerLog.SetTxt(4,tw2lv1);
+		playerLog.SetTxt(5,tw2lv2);
+		playerLog.SetTxt(6,tw2lv3);
+		playerLog.SetTxt(7,tw3lv1);
+		playerLog.SetTxt(8,tw3lv2);
+		playerLog.SetTxt(9,tw3lv3);
+		playerLog.SetTxt(10,unit1);
+		playerLog.SetTxt(11,unit2);
+		playerLog.SetTxt(12,unit3);
+		playerLog.SetTxt(13,unit4);
+	}
 }
