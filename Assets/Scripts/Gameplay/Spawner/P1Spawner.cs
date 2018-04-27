@@ -29,6 +29,8 @@ public class P1Spawner : Photon.MonoBehaviour {
 	{
 		if(PhotonNetwork.isMasterClient)
 			Instance = this;
+
+
 	}
 
 	void Update()

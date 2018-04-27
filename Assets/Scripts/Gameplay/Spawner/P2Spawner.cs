@@ -29,6 +29,8 @@ public class P2Spawner : Photon.MonoBehaviour {
 	{
 		if(PhotonNetwork.isMasterClient)
 			Instance = this;
+
+
 	}
 
 	void Update()
@@ -41,9 +43,9 @@ public class P2Spawner : Photon.MonoBehaviour {
 			}
 
 			countdown -= Time.deltaTime;
+		
+		
 		}
-
-
 	}
 
 	IEnumerator SpawnWave()
@@ -57,7 +59,6 @@ public class P2Spawner : Photon.MonoBehaviour {
 		yield return new WaitForSeconds (0.5f);
 		SpawnEnemy4();
 	}
-
 
 	void SpawnEnemy1()
 	{

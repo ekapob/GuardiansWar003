@@ -26,7 +26,7 @@ public class UnitShop : MonoBehaviour {
 		unit3price.text = lvlPrice [0].ToString();
 		unit4price.text = lvlPrice [0].ToString();
 		Instance = this;
-		if (MotherScript.Instance.currentGameSide == 1) {
+		if (MotherScript.Instance.currentGameSide == 1 || MotherScript.Instance.currentGameSide == 3) {
 			shopImg [0].texture = knightPic [0];
 			shopImg [1].texture = knightPic [0];
 			shopImg [2].texture = knightPic [0];

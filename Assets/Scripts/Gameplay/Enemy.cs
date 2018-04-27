@@ -44,6 +44,8 @@ public class Enemy : Photon.MonoBehaviour {
 	public Animator enemyAnim;
 	public P1EnemyMovement moveScript1;
 	public P2EnemyMovement moveScript2;
+	public P3EnemyMovement moveScript3;
+	public P4EnemyMovement moveScript4;
 	private bool getMoney;
 
 
@@ -142,8 +144,12 @@ public class Enemy : Photon.MonoBehaviour {
 		gameObject.tag = "SideRand";
 		if (moveScript1 != null) 
 			moveScript1.DontMove ();
-		else 
+		else if(moveScript2 != null)
 			moveScript2.DontMove ();
+		else if(moveScript3 != null)
+			moveScript3.DontMove ();
+		else
+			moveScript4.DontMove ();
 		enemyAnim.Play ("Death", -1, 0f);
 		Invoke ("Die",1.25f);
 	}
