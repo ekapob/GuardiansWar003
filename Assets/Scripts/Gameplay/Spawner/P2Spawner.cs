@@ -81,6 +81,7 @@ public class P2Spawner : Photon.MonoBehaviour {
 	}
 
 	public void UpgradeUnit(int pos){
+		Manager.instance.buildName = null;
 		if (unitLvl [pos - 1] == 1) {
 			prefabPath [pos - 1] += "/lvl2";
 			unitLvl [pos - 1]++;

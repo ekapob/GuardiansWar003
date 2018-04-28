@@ -100,24 +100,48 @@ public class CameraController : Photon.MonoBehaviour {
 			int cost = objScript.GetCost ();
 			PlayerStats.Money -= cost;
 		}
+		else if (MotherScript.Instance.currentGameSide == 3) {
+			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode3.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
+			Turret objScript = objTurret.GetComponent<Turret> ();
+			TestNode3.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
+			int cost = objScript.GetCost ();
+			PlayerStats.Money -= cost;
+		}
+		else if (MotherScript.Instance.currentGameSide == 4) {
+			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode4.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
+			Turret objScript = objTurret.GetComponent<Turret> ();
+			TestNode4.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
+			int cost = objScript.GetCost ();
+			PlayerStats.Money -= cost;
+		}
 	}
 
 	public void UpgradeUnit(int pos,int side){
-		if (side == 1) {
-			photonView.RPC ("RPC_MonUpgradeUnit", PhotonTargets.MasterClient, pos);
-		}
-		if (side == 2) {
-			photonView.RPC ("RPC_KniUpgradeUnit", PhotonTargets.MasterClient, pos);
-		}
+		if (side == 1)
+			photonView.RPC ("RPC_Mon1UpgradeUnit", PhotonTargets.MasterClient, pos);
+		if (side == 2)
+			photonView.RPC ("RPC_Kni2UpgradeUnit", PhotonTargets.MasterClient, pos);
+		if (side == 3)
+			photonView.RPC ("RPC_Kni2UpgradeUnit", PhotonTargets.MasterClient, pos);
+		if (side == 4)
+			photonView.RPC ("RPC_Mon3UpgradeUnit", PhotonTargets.MasterClient, pos);
 	}
 
 	[PunRPC]
-	private void RPC_KniUpgradeUnit(int pos){
+	private void RPC_Kni2UpgradeUnit(int pos){
 		P1Spawner.Instance.UpgradeUnit (pos);
 	}
 	[PunRPC]
-	private void RPC_MonUpgradeUnit(int pos){
+	private void RPC_Mon1UpgradeUnit(int pos){
 		P2Spawner.Instance.UpgradeUnit (pos);
+	}
+	[PunRPC]
+	private void RPC_Kni4UpgradeUnit(int pos){
+		P3Spawner.Instance.UpgradeUnit (pos);
+	}
+	[PunRPC]
+	private void RPC_Mon3UpgradeUnit(int pos){
+		P4Spawner.Instance.UpgradeUnit (pos);
 	}
 
 	public void MoveToPos(Transform winPos){

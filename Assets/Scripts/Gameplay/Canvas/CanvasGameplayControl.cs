@@ -10,7 +10,6 @@ public class CanvasGameplayControl : MonoBehaviour {
 	public GameObject standbyCam;
 	private int allPlayerInGame;
 	public GameObject loadingImg;
-	public int[] sidePlayer = new int[2] {0,0};
 	public bool winStat = false;
 	public Text countDownWave;
 	public Text playerGold;
@@ -44,6 +43,8 @@ public class CanvasGameplayControl : MonoBehaviour {
 			PauseAndExitButton.Instance.pause = true;
 			PauseAndExitButton.Instance.allButton.SetActive (true);
 			PauseAndExitButton.Instance.exitButton.SetActive (false);
+			CanvasGameplayControl.Instance.winStat = true;
+			PlayerStats.Instance.endGameStat = true;
 		}
 	}
 

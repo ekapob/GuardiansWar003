@@ -38,18 +38,18 @@ public class PlayerNetwork : MonoBehaviour {
 			} else {
 				NonMasterLoadedGame();
 			}
-		}	
-		if (scene.name == "Gameplay") {
+		}
+		//mode 1
+		if (scene.name == "GameplayTest") {
 			if (PhotonNetwork.isMasterClient) {
-				MasterLoadedGamePlay ();
+				MasterLoadedGamePlay ("GameplayTest");
 			} else {
 				NonMasterLoadedGamePlay ();
 			}
-		}
-		//test TD
-		if (scene.name == "GameplayTest") {
+		}// mode2
+		if (scene.name == "GameplayTest2") {
 			if (PhotonNetwork.isMasterClient) {
-				MasterLoadedGamePlay ();
+				MasterLoadedGamePlay ("GameplayTest2");
 			} else {
 				NonMasterLoadedGamePlay ();
 			}
@@ -72,9 +72,9 @@ public class PlayerNetwork : MonoBehaviour {
 	}
 
 	//Scene 4
-	private void MasterLoadedGamePlay(){
+	private void MasterLoadedGamePlay(string sceneName){
 		PhotonView.RPC ("RPC_LoadedGamePlayScene", PhotonTargets.MasterClient,PhotonNetwork.player);
-		PhotonView.RPC ("RPC_LoadGamePlayOther", PhotonTargets.Others);
+		PhotonView.RPC ("RPC_LoadGamePlayOther", PhotonTargets.Others,sceneName);
 	}
 	//Scene 3
 	private void NonMasterLoadedGame(){
@@ -93,8 +93,8 @@ public class PlayerNetwork : MonoBehaviour {
 	}
 	//Bring all player to game 4
 	[PunRPC]
-	private void RPC_LoadGamePlayOther(){
-		PhotonNetwork.LoadLevel (4);
+	private void RPC_LoadGamePlayOther(string sceneName){
+		PhotonNetwork.LoadLevel (sceneName);
 	}
 		
 	//Scene 3

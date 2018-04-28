@@ -29,7 +29,7 @@ public class P3Spawner : Photon.MonoBehaviour {
 	{
 		if(PhotonNetwork.isMasterClient)
 			Instance = this;
-		if (PhotonNetwork.playerList.Length == 4)
+		if (PhotonNetwork.playerList.Length == 2)
 			this.enabled = false;
 	}
 
@@ -81,6 +81,7 @@ public class P3Spawner : Photon.MonoBehaviour {
 	}
 
 	public void UpgradeUnit(int pos){
+		Manager.instance.buildName = null;
 		if (unitLvl [pos - 1] == 1) {
 			prefabPath [pos - 1] += "/lvl2";
 			unitLvl [pos - 1]++;

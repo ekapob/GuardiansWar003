@@ -198,6 +198,12 @@ public class Turret : Photon.MonoBehaviour {
 			} else if (MotherScript.Instance.currentGameSide == 2) {
 				TestNode node = TestNode2.Instance.node [onNode];
 				node.SetNodeToNull ();
+			} else if (MotherScript.Instance.currentGameSide == 3) {
+				TestNode node = TestNode3.Instance.node [onNode];
+				node.SetNodeToNull ();
+			} else if (MotherScript.Instance.currentGameSide == 4) {
+				TestNode node = TestNode4.Instance.node [onNode];
+				node.SetNodeToNull ();
 			}
 			PhotonNetwork.Destroy (gameObject);
 		}

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 
 	public static PlayerSoulChooseScript Instance;
-	public int mode = 0;
+	public int mode;
 	private int sidepick = 0;
 	[SerializeField]
 	private GameObject burn;
@@ -25,6 +25,7 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 		burn.SetActive (m_bombStat);
 		moveAble = true;
 		PhotonView = GetComponent<PhotonView> ();
+		mode = 0;
 	}
 
 	// Update is called once per frame
@@ -50,10 +51,10 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 						if(CanvasGameButton.Instance.knightPicked+CanvasGameButton.Instance.monsterPicked != PhotonNetwork.playerList.Length){
 							CanvasGameButton.Instance.CalculateSide ();// CALCULATE SIDE
 						}
-						photonView.RPC ("RPC_SendMode", PhotonTargets.All,mode); 
+						photonView.RPC ("RPC_SendMode", PhotonTargets.All,CanvasGameButton.Instance.modePick); 
 						photonView.RPC ("RPC_SendSide", PhotonTargets.All,CanvasGameButton.Instance.sidePlayer); 
 						//Load Mode
-						PhotonNetwork.LoadLevel (4);
+						CanvasGameButton.Instance.MasterLoadScene ();
 					}
 					CanvasGameButton.Instance.clockCount.text = mode.ToString();
 					PlayerNetwork.Instance.PlayersInGame = 0;

@@ -40,11 +40,15 @@ public class CanvasGameButton : MonoBehaviour {
 	public Text monsterPickedText;
 	public int knightPicked;
 	public int monsterPicked;
+	public string modeName;
+	public int modePick;
 
 
 	// Use this for initialization
 	void Awake () {
 		Instance = this;
+		modeName = "";
+		modePick = 0;
 		knightPicked = 0;
 		monsterPicked = 0;
 		sidePicChoose.gameObject.SetActive (false);
@@ -67,6 +71,7 @@ public class CanvasGameButton : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		Debug.Log ("mode : "+ modeName);
 		if (PhotonNetwork.connectionStateDetailed.ToString () == "Joined") {
 			connectCamera.SetActive (false);
 		}
@@ -89,9 +94,15 @@ public class CanvasGameButton : MonoBehaviour {
 		pause = false;
 	}
 
+	public void MasterLoadScene(){
+		PhotonNetwork.LoadLevel (modeName);
+	}
+
 	public void OnClickMode1(){
 		if(clickModeState && PhotonNetwork.isMasterClient){
 			PlayerSoulChooseScript.Instance.ClickMode1 ();
+			modeName = "GameplayTest";
+			modePick = 1;
 			mode1But.interactable = false;
 			mode2But.interactable = false;
 			clickModeState = false;
@@ -99,6 +110,8 @@ public class CanvasGameButton : MonoBehaviour {
 	}
 	public void OnClickMode2(){
 		if (clickModeState && PhotonNetwork.isMasterClient) {
+			modeName = "GameplayTest2";
+			modePick = 2;
 			PlayerSoulChooseScript.Instance.ClickMode2 ();
 			mode1But.interactable = false;
 			mode2But.interactable = false;
