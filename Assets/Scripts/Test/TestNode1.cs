@@ -10,10 +10,4 @@ public class TestNode1 : MonoBehaviour {
 	void Start () {
 		Instance = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 }

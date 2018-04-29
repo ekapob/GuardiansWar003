@@ -143,12 +143,18 @@ public class CanvasGameButton : MonoBehaviour {
 
 	public void CalculateMode(){
 		int randMode = Random.Range (1, 100);
-		if (randMode % 2 == 1) {
-			PlayerSoulChooseScript.Instance.mode = 1;
-			PlayerSoulChooseScript.Instance.ClickMode1 ();
+		if (PhotonNetwork.playerList.Length < 4) {
+			if (randMode % 2 == 1) {
+				PlayerSoulChooseScript.Instance.mode = 1;
+				PlayerSoulChooseScript.Instance.ClickMode1 ();
+				modeName = "GameplayTest";
+			} else {
+				PlayerSoulChooseScript.Instance.mode = 2;
+				PlayerSoulChooseScript.Instance.ClickMode2 ();
+				modeName = "GameplayTest2";
+			}
 		} else {
-			PlayerSoulChooseScript.Instance.mode = 2;
-			PlayerSoulChooseScript.Instance.ClickMode2 ();
+			modeName = "GameplayTest2";
 		}
 	}
 		

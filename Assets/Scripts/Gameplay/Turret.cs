@@ -17,6 +17,7 @@ public class Turret : Photon.MonoBehaviour {
 	public GameObject upGradePrefab;
 	public Text costToUpgradetxt;
 	public Text costToSelltxt;
+	public Button upgradeButton;
 
 	[Header("General")]
 
@@ -48,11 +49,12 @@ public class Turret : Photon.MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (upGradePrefab != null) {
+		if (upGradePrefab == null) {
+			upgradeButton.interactable = false;
+			costToUpgradetxt.text = "MAX"; 
+		} else {
 			Turret upPrefScript = upGradePrefab.GetComponent<Turret> ();
 			costToUpgradetxt.text = upPrefScript.GetCost ().ToString (); 
-		} else {
-			costToUpgradetxt.gameObject.SetActive (false);
 		}
 		costToSelltxt.text = (turretCost / 3).ToString();
 		turretUI.SetActive (false);

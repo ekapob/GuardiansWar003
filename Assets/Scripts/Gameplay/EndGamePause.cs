@@ -23,21 +23,21 @@ public class EndGamePause : MonoBehaviour {
 						MotherScript.Instance.playerLog [0]++;
 					} else if (name == PlayerStats.Instance.tw1lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [1]++;
-					}/* else if (name == PlayerStats.Instance.tw1lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw1lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [2]++;
-					}*/ else if (name == PlayerStats.Instance.tw2lv1.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw2lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [3]++;
 					} else if (name == PlayerStats.Instance.tw2lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [4]++;
-					}/* else if (name == PlayerStats.Instance.tw2lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw2lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [5]++;
-					}*/ else if (name == PlayerStats.Instance.tw3lv1.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw3lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [6]++;
 					} else if (name == PlayerStats.Instance.tw3lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [7]++;
-					}/* else if (name == PlayerStats.Instance.tw3lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw3lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [8]++;
-					}*/
+					}
 				}
 				MotherScript.Instance.playerLog [9] = UnitShop.Instance.lvlUnit [0];
 				MotherScript.Instance.playerLog [10] = UnitShop.Instance.lvlUnit [1];
@@ -52,21 +52,21 @@ public class EndGamePause : MonoBehaviour {
 						MotherScript.Instance.playerLog [0]++;
 					} else if (name == PlayerStats.Instance.tw1lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [1]++;
-					}/* else if (name == PlayerStats.Instance.tw1lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw1lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [2]++;
-					}*/ else if (name == PlayerStats.Instance.tw2lv1.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw2lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [3]++;
 					} else if (name == PlayerStats.Instance.tw2lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [4]++;
-					}/* else if (name == PlayerStats.Instance.tw2lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw2lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [5]++;
-					}*/ else if (name == PlayerStats.Instance.tw3lv1.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw3lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [6]++;
 					} else if (name == PlayerStats.Instance.tw3lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [7]++;
-					}/* else if (name == PlayerStats.Instance.tw3lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw3lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [8]++;
-					}*/
+					}
 				}
 				MotherScript.Instance.playerLog [9] = UnitShop.Instance.lvlUnit [0];
 				MotherScript.Instance.playerLog [10] = UnitShop.Instance.lvlUnit [1];
@@ -82,21 +82,21 @@ public class EndGamePause : MonoBehaviour {
 						MotherScript.Instance.playerLog [0]++;
 					} else if (name == PlayerStats.Instance.tw1lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [1]++;
-					}/* else if (name == PlayerStats.Instance.tw1lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw1lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [2]++;
-					}*/ else if (name == PlayerStats.Instance.tw2lv1.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw2lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [3]++;
 					} else if (name == PlayerStats.Instance.tw2lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [4]++;
-					}/* else if (name == PlayerStats.Instance.tw2lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw2lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [5]++;
-					}*/ else if (name == PlayerStats.Instance.tw3lv1.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw3lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [6]++;
 					} else if (name == PlayerStats.Instance.tw3lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [7]++;
-					}/* else if (name == PlayerStats.Instance.tw3lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw3lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [8]++;
-					}*/
+					}
 				}
 				MotherScript.Instance.playerLog [9] = UnitShop.Instance.lvlUnit [0];
 				MotherScript.Instance.playerLog [10] = UnitShop.Instance.lvlUnit [1];
@@ -112,21 +112,21 @@ public class EndGamePause : MonoBehaviour {
 						MotherScript.Instance.playerLog [0]++;
 					} else if (name == PlayerStats.Instance.tw1lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [1]++;
-					}/* else if (name == PlayerStats.Instance.tw1lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw1lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [2]++;
-					}*/ else if (name == PlayerStats.Instance.tw2lv1.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw2lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [3]++;
 					} else if (name == PlayerStats.Instance.tw2lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [4]++;
-					}/* else if (name == PlayerStats.Instance.tw2lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw2lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [5]++;
-					}*/ else if (name == PlayerStats.Instance.tw3lv1.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw3lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [6]++;
 					} else if (name == PlayerStats.Instance.tw3lv2.name+"(Clone)") {
 						MotherScript.Instance.playerLog [7]++;
-					}/* else if (name == PlayerStats.Instance.tw3lv3.name+"(Clone)") {
+					} else if (name == PlayerStats.Instance.tw3lv3.name+"(Clone)") {
 						MotherScript.Instance.playerLog [8]++;
-					}*/
+					}
 				}
 				MotherScript.Instance.playerLog [9] = UnitShop.Instance.lvlUnit [0];
 				MotherScript.Instance.playerLog [10] = UnitShop.Instance.lvlUnit [1];

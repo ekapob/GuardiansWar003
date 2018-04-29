@@ -7,9 +7,6 @@ public class LogCanvasScript : MonoBehaviour {
 	public GameObject battleLog;
 	public GameObject logPos;
 	// Use this for initialization
-	void Start () {
-	}
-
 	public void OnClickShowBattleLog(){
 		battleLog.transform.position = logPos.transform.position;
 	}

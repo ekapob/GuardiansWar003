@@ -42,8 +42,9 @@ public class TestNode : MonoBehaviour {
 		if (!PlayerStats.Instance.endGameStat) {
 			if (!CanvasGameplayControl.Instance.winStat) {
 				if (turret != null) {
-					if (MotherScript.Instance.currentGameSide.ToString () == tag)
+					if (MotherScript.Instance.currentGameSide.ToString () == tag) {
 						turretScript.turretUI.SetActive (true);
+					}
 				} else {
 					if (Manager.instance.buildName == null) {
 						return;
