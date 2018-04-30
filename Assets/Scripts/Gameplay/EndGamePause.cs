@@ -18,7 +18,6 @@ public class EndGamePause : MonoBehaviour {
 			foreach (TestNode node in TestNode1.Instance.node) {
 				if (node.GetTurretName() != null) {
 					string name = node.GetTurretName ();
-					Debug.Log (node.GetNodeNo() + " " + name);
 					if (name == PlayerStats.Instance.tw1lv1.name+"(Clone)") {
 						MotherScript.Instance.playerLog [0]++;
 					} else if (name == PlayerStats.Instance.tw1lv2.name+"(Clone)") {

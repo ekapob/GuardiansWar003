@@ -55,4 +55,8 @@ public class EnemyAttack : MonoBehaviour {
 			e.CoreTakeDamage (damage);
 
 	}
+
+	public void SetDmg(int dmgCost){
+		damage = dmgCost;
+	}
 }

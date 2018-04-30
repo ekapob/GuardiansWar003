@@ -42,10 +42,12 @@ public class CanvasGameButton : MonoBehaviour {
 	public int monsterPicked;
 	public string modeName;
 	public int modePick;
+	public GameObject loadingPanel;
 
 
 	// Use this for initialization
 	void Awake () {
+		loadingPanel.SetActive (false);
 		Instance = this;
 		modeName = "";
 		modePick = 0;

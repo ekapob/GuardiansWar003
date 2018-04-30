@@ -32,13 +32,15 @@ public class CoreScript : MonoBehaviour {
 		//----------------------------------------------------------
 	}
 
-	//edit
-	/*void OnTriggerEnter(Collider other) {
+	/*
+	void OnTriggerEnter(Collider other) {
+		Debug.Log ("Tag : " + other.tag);
 		if (other.tag == "Enemy") {
 			Enemy dmgScript = other.GetComponent <Enemy>();
 			CoreTakeDamage (dmgScript.GetDmg());
-			PhotonNetwork.Destroy (other.gameObject);
+			dmgScript.Die ();
 		}
-	}*/
+	}
+	*/
 
 }

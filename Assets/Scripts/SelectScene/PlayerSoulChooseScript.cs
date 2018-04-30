@@ -47,6 +47,9 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 					Invoke ("MoveToSpawner", 2.5f);
 					toGame = true;
 				} else if (toGame) {
+					CanvasGameButton.Instance.loadingPanel.SetActive (true);
+					CanvasGameButton.Instance.clockCount.text = mode.ToString();
+					PlayerNetwork.Instance.PlayersInGame = 0;
 					if (PhotonNetwork.isMasterClient) {
 						if(CanvasGameButton.Instance.knightPicked+CanvasGameButton.Instance.monsterPicked != PhotonNetwork.playerList.Length){
 							CanvasGameButton.Instance.CalculateSide ();// CALCULATE SIDE
@@ -56,8 +59,6 @@ public class PlayerSoulChooseScript : Photon.MonoBehaviour {
 						//Load Mode
 						CanvasGameButton.Instance.MasterLoadScene ();
 					}
-					CanvasGameButton.Instance.clockCount.text = mode.ToString();
-					PlayerNetwork.Instance.PlayersInGame = 0;
 				}
 			}
 		}

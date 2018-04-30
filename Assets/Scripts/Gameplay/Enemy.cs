@@ -114,8 +114,10 @@ public class Enemy : Photon.MonoBehaviour {
 		GameObject bulletGO = (GameObject)Instantiate(enemyAttackPrefab, firePoint.position, firePoint.rotation);
 		EnemyAttack bullet = bulletGO.GetComponent<EnemyAttack>();
 
-		if (bullet != null)
-			bullet.Seek(target);
+		if (bullet != null) {
+			bullet.Seek (target);
+			//bullet.SetDmg (unitDamage);
+		}
 	}
 
 	public void TakeDamage(float amount)
@@ -160,7 +162,7 @@ public class Enemy : Photon.MonoBehaviour {
 		healthBar.fillAmount = currentHealth / startHealth;
 	}
 
-	void Die(){
+	public void Die(){
 		PhotonView.Destroy(gameObject);
 	}
 	public int GetDmg(){
