@@ -58,7 +58,6 @@ public class Turret : Photon.MonoBehaviour {
 		}
 		costToSelltxt.text = (turretCost / 3).ToString();
 		turretUI.SetActive (false);
-		onNode = CameraController.Instance.currentClickNode;
 		PhotonView = GetComponent<PhotonView> ();
 		InvokeRepeating("UpdateTarget", 0f, 0.5f);
 	}
@@ -93,6 +92,9 @@ public class Turret : Photon.MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			HideUI ();
+		}
 
 		if (!PlayerStats.Instance.endGameStat) {
 			if (photonView.isMine) {
@@ -203,7 +205,7 @@ public class Turret : Photon.MonoBehaviour {
 			} else if (MotherScript.Instance.currentGameSide == 3) {
 				TestNode node = TestNode3.Instance.node [onNode];
 				node.SetNodeToNull ();
-			} else if (MotherScript.Instance.currentGameSide == 4) {
+			} else {
 				TestNode node = TestNode4.Instance.node [onNode];
 				node.SetNodeToNull ();
 			}
@@ -225,10 +227,15 @@ public class Turret : Photon.MonoBehaviour {
 			PlayerStats.Money -= upPrefScript.GetCost ();
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", upGradePrefab.name), transform.position, transform.rotation, 0);	
 			Turret objScript = objTurret.GetComponent<Turret> ();
+			objScript.SetOnNode (onNode);
 			if (MotherScript.Instance.currentGameSide == 1) {	
 				TestNode1.Instance.node [onNode].SetTurret (objTurret, objScript);
 			} else if (MotherScript.Instance.currentGameSide == 2) {	
 				TestNode2.Instance.node [onNode].SetTurret (objTurret, objScript);
+			} else if (MotherScript.Instance.currentGameSide == 3) {	
+				TestNode3.Instance.node [onNode].SetTurret (objTurret, objScript);
+			} else {
+				TestNode4.Instance.node [onNode].SetTurret (objTurret, objScript);
 			}
 			PhotonNetwork.Destroy (gameObject);
 		} else {
@@ -238,6 +245,10 @@ public class Turret : Photon.MonoBehaviour {
 	}
 	public void OnClickCloseCanvas(){
 		turretUI.gameObject.SetActive (false);
+	}
+
+	public void SetOnNode(int nodePlace){
+		onNode = nodePlace;
 	}
 
 	public int GetCost(){

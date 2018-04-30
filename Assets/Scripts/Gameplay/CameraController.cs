@@ -89,6 +89,7 @@ public class CameraController : Photon.MonoBehaviour {
 		if (MotherScript.Instance.currentGameSide == 1) {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode1.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
 			Turret objScript = objTurret.GetComponent<Turret> ();
+			objScript.SetOnNode (currentClickNode);
 			TestNode1.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
 			int cost = objScript.GetCost ();
 			PlayerStats.Money -= cost;
@@ -97,6 +98,7 @@ public class CameraController : Photon.MonoBehaviour {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode2.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
 			Turret objScript = objTurret.GetComponent<Turret> ();
 			TestNode2.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
+			objScript.SetOnNode (currentClickNode);
 			int cost = objScript.GetCost ();
 			PlayerStats.Money -= cost;
 		}
@@ -104,6 +106,7 @@ public class CameraController : Photon.MonoBehaviour {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode3.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
 			Turret objScript = objTurret.GetComponent<Turret> ();
 			TestNode3.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
+			objScript.SetOnNode (currentClickNode);
 			int cost = objScript.GetCost ();
 			PlayerStats.Money -= cost;
 		}
@@ -111,6 +114,7 @@ public class CameraController : Photon.MonoBehaviour {
 			GameObject objTurret = PhotonNetwork.Instantiate (Path.Combine ("Prefabs", Manager.instance.buildName), TestNode4.Instance.node[currentClickNode].transform.position, TestNode2.Instance.node[currentClickNode].transform.rotation, 0);
 			Turret objScript = objTurret.GetComponent<Turret> ();
 			TestNode4.Instance.node [currentClickNode].SetTurret (objTurret, objScript);
+			objScript.SetOnNode (currentClickNode);
 			int cost = objScript.GetCost ();
 			PlayerStats.Money -= cost;
 		}
