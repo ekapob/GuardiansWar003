@@ -26,6 +26,7 @@ public class Turret : Photon.MonoBehaviour {
 	[Header("Use Bullets(default)")]
 	public GameObject bulletPrefab;
 	public float fireRate = 1f;
+	public bool canSlow = false;
 	private float fireCountdown = 0f;
 
 	[Header("Use Laser")]
@@ -162,6 +163,9 @@ public class Turret : Photon.MonoBehaviour {
 	{
 		GameObject bulletGO = PhotonNetwork.Instantiate (Path.Combine ("Prefabs/GameUnit", bulletPrefab.name), firePoint.position, firePoint.rotation, 0);
 		Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+		if(canSlow)
+			target.GetComponent<Enemy> ().Slow(slowAmount);
 
 		if (bullet != null)
 			bullet.Seek(target);

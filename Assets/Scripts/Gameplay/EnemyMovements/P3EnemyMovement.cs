@@ -90,4 +90,7 @@ public class P3EnemyMovement : Photon.MonoBehaviour {
 	public void DontMove(){
 		moveAble = false;
 	}
+	public void DisableScipt(){
+		this.enabled = false;
+	}
 }

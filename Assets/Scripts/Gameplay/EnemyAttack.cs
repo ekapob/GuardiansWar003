@@ -59,4 +59,5 @@ public class EnemyAttack : MonoBehaviour {
 	public void SetDmg(int dmgCost){
 		damage = dmgCost;
 	}
+		
 }

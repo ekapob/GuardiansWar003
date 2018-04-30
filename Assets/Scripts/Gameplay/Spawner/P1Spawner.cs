@@ -37,7 +37,7 @@ public class P1Spawner : Photon.MonoBehaviour {
 	{
 		if (!PlayerStats.Instance.endGameStat) {
 			if (countdown <= 0f) {
-				if (PhotonNetwork.isMasterClient && MotherScript.Instance.currentGameMode == 1)
+				if (PhotonNetwork.isMasterClient /*&& MotherScript.Instance.currentGameMode == 1*/)
 					StartCoroutine (SpawnWave ());
 				countdown = timeBetweenWaves;
 			}
