@@ -86,16 +86,6 @@ public class Enemy : Photon.MonoBehaviour {
 	}
 
 	void Update () {
-		if (target != null) {
-			if (moveScript1 != null) 
-				moveScript1.DisableScipt ();
-			else if(moveScript2 != null)
-				moveScript2.DisableScipt ();
-			else if(moveScript3 != null)
-				moveScript3.DisableScipt ();
-			else
-				moveScript4.DisableScipt ();
-		}
 		if (PlayerStats.Instance.endGameStat) {
 			photonView.RPC ("RPC_Die", PhotonTargets.All); 
 		}
@@ -128,8 +118,7 @@ public class Enemy : Photon.MonoBehaviour {
 			bullet.Seek (target);
 			//bullet.SetDmg (unitDamage);
 		}
-		if(MotherScript.Instance.currentGameMode == 1)
-			Die ();
+		Die ();
 	}
 
 	public void TakeDamage(float amount)
@@ -179,18 +168,5 @@ public class Enemy : Photon.MonoBehaviour {
 	}
 	public int GetDmg(){
 		return unitDamage;
-	}
-
-	void OnTriggerEnter(Collider other)
-	{
-		Debug.Log ("asdsdsd");
-		if (other.tag == "Mode1Core") 
-		{
-			CoreScript e = other.GetComponent<CoreScript> ();
-
-			if(e!=null)
-				e.CoreTakeDamage (100);
-			Destroy (this.gameObject);
-		}
 	}
 }

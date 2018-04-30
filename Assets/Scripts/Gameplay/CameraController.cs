@@ -126,7 +126,7 @@ public class CameraController : Photon.MonoBehaviour {
 		if (side == 2)
 			photonView.RPC ("RPC_Kni2UpgradeUnit", PhotonTargets.MasterClient, pos);
 		if (side == 3)
-			photonView.RPC ("RPC_Kni2UpgradeUnit", PhotonTargets.MasterClient, pos);
+			photonView.RPC ("RPC_Kni4UpgradeUnit", PhotonTargets.MasterClient, pos);
 		if (side == 4)
 			photonView.RPC ("RPC_Mon3UpgradeUnit", PhotonTargets.MasterClient, pos);
 	}
@@ -150,5 +150,69 @@ public class CameraController : Photon.MonoBehaviour {
 
 	public void MoveToPos(Transform winPos){
 		transform.position = winPos.position;
+	}
+
+	/////////mode2
+
+	public void SendUnit(int side,int unitPos,string path){
+		if (side == 1) {
+			if(unitPos == 1)
+				photonView.RPC ("RPC_Mon1UpgradeUnit1", PhotonTargets.MasterClient,path);
+			if(unitPos == 2)
+				photonView.RPC ("RPC_Mon1UpgradeUnit2", PhotonTargets.MasterClient,path);
+		}
+		if (side == 2) {
+			if(unitPos == 1)
+				photonView.RPC ("RPC_Kni2UpgradeUnit1", PhotonTargets.MasterClient,path);
+			if(unitPos == 2)
+				photonView.RPC ("RPC_Kni2UpgradeUnit2", PhotonTargets.MasterClient,path);
+		}
+		if (side == 3) {
+			if(unitPos == 1)
+				photonView.RPC ("RPC_Kni4UpgradeUnit1", PhotonTargets.MasterClient,path);
+			if(unitPos == 2)
+				photonView.RPC ("RPC_Kni4UpgradeUnit2", PhotonTargets.MasterClient,path);
+		}
+		if (side == 4) {
+			if(unitPos == 1)
+				photonView.RPC ("RPC_Mon3UpgradeUnit1", PhotonTargets.MasterClient,path);
+			if(unitPos == 2)
+				photonView.RPC ("RPC_Mon3UpgradeUnit2", PhotonTargets.MasterClient,path);
+		}
+	}
+	[PunRPC]
+	private void RPC_Kni2UpgradeUnit1(string pos){
+		P1Spawner.Instance.SpawnEnemy1 (pos);
+	}
+	[PunRPC]
+	private void RPC_Kni2UpgradeUnit2(string pos){
+		P1Spawner.Instance.SpawnEnemy2 (pos);
+	}
+
+	[PunRPC]
+	private void RPC_Mon1UpgradeUnit1(string pos){
+		P2Spawner.Instance.SpawnEnemy1 (pos);
+	}
+	[PunRPC]
+	private void RPC_Mon1UpgradeUnit2(string pos){
+		P2Spawner.Instance.SpawnEnemy2 (pos);
+	}
+
+	[PunRPC]
+	private void RPC_Kni4UpgradeUnit1(string pos){
+		P3Spawner.Instance.SpawnEnemy1 (pos);
+	}
+	[PunRPC]
+	private void RPC_Kni4UpgradeUnit2(string pos){
+		P3Spawner.Instance.SpawnEnemy2 (pos);
+	}
+
+	[PunRPC]
+	private void RPC_Mon3UpgradeUnit1(string pos){
+		P4Spawner.Instance.SpawnEnemy1 (pos);
+	}
+	[PunRPC]
+	private void RPC_Mon3UpgradeUnit2(string pos){
+		P4Spawner.Instance.SpawnEnemy2 (pos);
 	}
 }

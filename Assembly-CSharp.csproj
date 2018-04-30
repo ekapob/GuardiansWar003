@@ -273,6 +273,8 @@
      <Compile Include="Assets\Scripts\Gameplay\EnemyMovements\P4EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\Gameplay\HealUnit.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Manager.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\Mode2\SentButPackScript.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\Mode2\UnitShopMode2.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Node.cs" />
      <Compile Include="Assets\Scripts\Gameplay\NodeControlForPlayer.cs" />
      <Compile Include="Assets\Scripts\Gameplay\NodeUI.cs" />

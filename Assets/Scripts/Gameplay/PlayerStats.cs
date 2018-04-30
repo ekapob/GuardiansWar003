@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour {
 	public bool endGameStat;
 	public static int Money;
 	public int startMoney = 1000;
+	public int incomeGold;
 	[Header("Tower 1")]
 	public GameObject tw1lv1;
 	public GameObject tw1lv2;
@@ -28,5 +29,6 @@ public class PlayerStats : MonoBehaviour {
 		endGameStat = false;
 		Instance = this;
 		Money = startMoney;
+		incomeGold = startMoney;
 	}
 }

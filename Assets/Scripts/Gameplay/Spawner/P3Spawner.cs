@@ -91,4 +91,14 @@ public class P3Spawner : Photon.MonoBehaviour {
 			unitLvl [pos - 1]++;
 		}
 	}
+	///////mode 2
+
+	public void SpawnEnemy1 (string pathPrefab)
+	{
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine (pathPrefab, enemy1Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+	}
+	public void SpawnEnemy2 (string pathPrefab)
+	{
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine (pathPrefab, enemy4Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+	}
 }

@@ -37,7 +37,7 @@ public class P2Spawner : Photon.MonoBehaviour {
 	{
 		if (!PlayerStats.Instance.endGameStat) {
 			if (countdown <= 0f) {
-				if (PhotonNetwork.isMasterClient /*&& MotherScript.Instance.currentGameMode == 1*/)
+				if (PhotonNetwork.isMasterClient && MotherScript.Instance.currentGameMode == 1)
 					StartCoroutine (SpawnWave ());
 				countdown = timeBetweenWaves;
 			}
@@ -90,5 +90,19 @@ public class P2Spawner : Photon.MonoBehaviour {
 			prefabPath [pos - 1] += "/lvl3";
 			unitLvl [pos - 1]++;
 		}
+	}
+	///////mode 2
+
+	public void SpawnEnemy1 (string pathPrefab)
+	{
+		string path = prefabPath [0] + pathPrefab;
+		Debug.Log (path);
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine (path, enemy1Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+	}
+	public void SpawnEnemy2 (string pathPrefab)
+	{
+		string path = prefabPath [0] + pathPrefab;
+		Debug.Log (path);
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine (path, enemy4Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
 	}
 }

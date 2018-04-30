@@ -18,7 +18,7 @@ public class P1Spawner : Photon.MonoBehaviour {
 
 	public Transform spawnPoint;
 
-	public float timeBetweenWaves = 5f;
+	public float timeBetweenWaves;
 	private float countdown = 15f;
 
 	public Text waveCountdownText;
@@ -29,7 +29,11 @@ public class P1Spawner : Photon.MonoBehaviour {
 	{
 		if(PhotonNetwork.isMasterClient)
 			Instance = this;
-
+		if (MotherScript.Instance.currentGameMode == 1) {
+			timeBetweenWaves = 5f;
+		} else {
+			timeBetweenWaves = 30f;
+		}
 
 	}
 
@@ -37,8 +41,11 @@ public class P1Spawner : Photon.MonoBehaviour {
 	{
 		if (!PlayerStats.Instance.endGameStat) {
 			if (countdown <= 0f) {
-				if (PhotonNetwork.isMasterClient /*&& MotherScript.Instance.currentGameMode == 1*/)
+				if (PhotonNetwork.isMasterClient && MotherScript.Instance.currentGameMode == 1)
 					StartCoroutine (SpawnWave ());
+				if (MotherScript.Instance.currentGameMode == 2) {
+					PlayerStats.Money += PlayerStats.Instance.incomeGold;
+				}
 				countdown = timeBetweenWaves;
 			}
 
@@ -90,5 +97,17 @@ public class P1Spawner : Photon.MonoBehaviour {
 			prefabPath [pos - 1] += "/lvl3";
 			unitLvl [pos - 1]++;
 		}
+	}
+	///////mode 2
+
+	public void SpawnEnemy1 (string pathPrefab)
+	{
+		Debug.Log (prefabPath[0]+pathPrefab);
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine (prefabPath[0]+pathPrefab, enemy1Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
+	}
+	public void SpawnEnemy2 (string pathPrefab)
+	{
+		Debug.Log (prefabPath[0]+pathPrefab);
+		GameObject unit = PhotonNetwork.Instantiate (Path.Combine (prefabPath[0]+pathPrefab, enemy4Prefab.name), spawnPoint.position, spawnPoint.rotation, 0);
 	}
 }
