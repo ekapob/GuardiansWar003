@@ -263,6 +263,7 @@
      <Compile Include="Assets\Scripts\Gameplay\Canvas\CanvasGameplayControl.cs" />
      <Compile Include="Assets\Scripts\Gameplay\CanvasNode.cs" />
      <Compile Include="Assets\Scripts\Gameplay\CoreScript.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\CurrentTowerPicked.cs" />
      <Compile Include="Assets\Scripts\Gameplay\EndGamePause.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Enemy.cs" />
      <Compile Include="Assets\Scripts\Gameplay\EnemyAttack.cs" />
