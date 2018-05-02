@@ -24,9 +24,18 @@ public class P1Spawner : Photon.MonoBehaviour {
 	public Text waveCountdownText;
 
 	private int waveIndex = 0;
+	[Header("Set Game Time")]
+	public float setGameTime;
+	private float gameTimer;
+	public Text gameTimerTxtMin;
+	public Text gameTimerTxtSec;
+	public GameObject showEndGame;
+
+
 
 	void Start()
 	{
+		showEndGame.SetActive (false);
 		if(PhotonNetwork.isMasterClient)
 			Instance = this;
 		if (MotherScript.Instance.currentGameMode == 1) {
@@ -34,12 +43,25 @@ public class P1Spawner : Photon.MonoBehaviour {
 		} else {
 			timeBetweenWaves = 10f;
 		}
+		gameTimer = setGameTime;
+		gameTimerTxtMin.text = ((int)(gameTimer / 60)).ToString ();
 
 	}
 
 	void Update()
 	{
 		if (!PlayerStats.Instance.endGameStat) {
+			if (gameTimer > 0f) {
+				gameTimer -= Time.deltaTime;
+				gameTimerTxtMin.text = ((int)(gameTimer / 60)).ToString ();
+				gameTimerTxtSec.text = ((int)(gameTimer % 60)).ToString ();
+			} else {
+				gameTimerTxtMin.text = "TI";
+				gameTimerTxtSec.text = "ME";
+				CanvasGameplayControl.Instance.winStat = true;
+				PlayerStats.Instance.endGameStat = true;
+				showEndGame.SetActive (true);
+			}
 			if (countdown <= 0f) {
 				if (PhotonNetwork.isMasterClient && MotherScript.Instance.currentGameMode == 1)
 					StartCoroutine (SpawnWave ());
