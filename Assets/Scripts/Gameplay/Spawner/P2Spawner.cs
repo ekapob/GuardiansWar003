@@ -18,8 +18,8 @@ public class P2Spawner : Photon.MonoBehaviour {
 
 	public Transform spawnPoint;
 
-	public float timeBetweenWaves = 5f;
-	private float countdown = 15f;
+	public float timeBetweenWaves;
+	private float countdown = 60f;
 
 	public Text waveCountdownText;
 
@@ -30,6 +30,11 @@ public class P2Spawner : Photon.MonoBehaviour {
 		if(PhotonNetwork.isMasterClient)
 			Instance = this;
 
+		if (MotherScript.Instance.currentGameMode == 1) {
+			timeBetweenWaves = 10f;
+		} else {
+			timeBetweenWaves = 10f;
+		}
 
 	}
 

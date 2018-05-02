@@ -251,7 +251,6 @@
      <Compile Include="Assets\Scripts\CreateRoom\CreateRoom.cs" />
      <Compile Include="Assets\Scripts\CurrentRoom\CurrentRoomCanvas.cs" />
      <Compile Include="Assets\Scripts\CurrentRoom\PlayerLayoutGroup.cs" />
-     <Compile Include="Assets\Scripts\CurrentRoom\PlayerListing.cs" />
      <Compile Include="Assets\Scripts\Extra\CanvasGameButton.cs" />
      <Compile Include="Assets\Scripts\Extra\LeaveCurrentMatch.cs" />
      <Compile Include="Assets\Scripts\Extra\PauseAndExitButton.cs" />
@@ -298,6 +297,7 @@
      <Compile Include="Assets\Scripts\Generic\DDOL.cs" />
      <Compile Include="Assets\Scripts\Lobby\LobbyCanvas.cs" />
      <Compile Include="Assets\Scripts\Lobby\OptionCanvas.cs" />
+     <Compile Include="Assets\Scripts\Lobby\PlayerListing.cs" />
      <Compile Include="Assets\Scripts\Lobby\RoomLayoutGroup.cs" />
      <Compile Include="Assets\Scripts\Lobby\RoomListing.cs" />
      <Compile Include="Assets\Scripts\MainCanvasManager.cs" />
