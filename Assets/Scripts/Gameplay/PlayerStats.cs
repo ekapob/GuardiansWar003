@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour {
 
 	public static PlayerStats Instance;
+	public Text incomeTxt;
 	public bool endGameStat;
 	public static int Money;
 	public int startMoney = 1000;
@@ -29,6 +30,13 @@ public class PlayerStats : MonoBehaviour {
 		endGameStat = false;
 		Instance = this;
 		Money = startMoney;
-		incomeGold = startMoney;
+		incomeGold = startMoney/2;
+		PrintIncome ();
+	}
+
+	public void PrintIncome(){
+		if (incomeTxt != null) {
+			incomeTxt.text = incomeGold.ToString ();
+		}
 	}
 }
