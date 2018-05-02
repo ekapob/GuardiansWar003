@@ -96,7 +96,7 @@ public class PlayerNetwork : MonoBehaviour {
 	private void RPC_LoadGamePlayOther(string sceneName){
 		PhotonNetwork.LoadLevel (sceneName);
 	}
-		
+
 	//Scene 3
 	[PunRPC]
 	private void RPC_LoadedGameScene(PhotonPlayer photonPlayer){
@@ -150,12 +150,15 @@ public class PlayerNetwork : MonoBehaviour {
 		m_pingCoroutine = StartCoroutine (C_SetPing ());
 	}
 
-	public void setLogText(int pos,string name,string tw1lv1,string tw1lv2,string tw1lv3,string tw2lv1,string tw2lv2,string tw2lv3,string tw3lv1,string tw3lv2,string tw3lv3,string unit1,string unit2,string unit3,string unit4){
-		PhotonView.RPC ("RPC_SetLogTxt",PhotonTargets.All,pos,name,tw1lv1,tw1lv2,tw1lv3,tw2lv1,tw2lv2,tw2lv3,tw3lv1,tw3lv2,tw3lv3,unit1,unit2,unit3,unit4);
+	public void setLogText1(int pos,string name,string tw1lv1,string tw1lv2,string tw1lv3,string tw2lv1,string tw2lv2,string tw2lv3,string tw3lv1,string tw3lv2,string tw3lv3,string unit1,string unit2,string unit3,string unit4){
+		PhotonView.RPC ("RPC_SetLogTxt1",PhotonTargets.All,pos,name,tw1lv1,tw1lv2,tw1lv3,tw2lv1,tw2lv2,tw2lv3,tw3lv1,tw3lv2,tw3lv3,unit1,unit2,unit3,unit4);
 	}
-		
+	public void setLogText2(int pos,string name,string tw1lv1,string tw1lv2,string tw1lv3,string tw2lv1,string tw2lv2,string tw2lv3,string tw3lv1,string tw3lv2,string tw3lv3,string u1lv1,string u1lv2,string u1lv3,string u2lv1,string u2lv2,string u2lv3){
+		PhotonView.RPC ("RPC_SetLogTxt2",PhotonTargets.All,pos,name,tw1lv1,tw1lv2,tw1lv3,tw2lv1,tw2lv2,tw2lv3,tw3lv1,tw3lv2,tw3lv3,u1lv1,u1lv2,u1lv3,u2lv1,u2lv2,u2lv3);
+	}
+
 	[PunRPC]
-	public void RPC_SetLogTxt(int pos,string name,string tw1lv1,string tw1lv2,string tw1lv3,string tw2lv1,string tw2lv2,string tw2lv3,string tw3lv1,string tw3lv2,string tw3lv3,string unit1,string unit2,string unit3,string unit4){
+	public void RPC_SetLogTxt1(int pos,string name,string tw1lv1,string tw1lv2,string tw1lv3,string tw2lv1,string tw2lv2,string tw2lv3,string tw3lv1,string tw3lv2,string tw3lv3,string unit1,string unit2,string unit3,string unit4){
 		BattleLogTxt playerLog = MotherLogScript.Instance.battleLogScript [pos];
 		playerLog.SetTxt(0,name);
 		playerLog.SetTxt(1,tw1lv1);
@@ -171,5 +174,25 @@ public class PlayerNetwork : MonoBehaviour {
 		playerLog.SetTxt(11,unit2);
 		playerLog.SetTxt(12,unit3);
 		playerLog.SetTxt(13,unit4);
+	}
+	[PunRPC]
+	public void RPC_SetLogTxt2(int pos,string name,string tw1lv1,string tw1lv2,string tw1lv3,string tw2lv1,string tw2lv2,string tw2lv3,string tw3lv1,string tw3lv2,string tw3lv3,string u1lv1,string u1lv2,string u1lv3,string u2lv1,string u2lv2,string u2lv3){
+		BattleLogTxt playerLog = MotherLogScript.Instance.battleLogScript [pos];
+		playerLog.SetTxt(0,name);
+		playerLog.SetTxt(1,tw1lv1);
+		playerLog.SetTxt(2,tw1lv2);
+		playerLog.SetTxt(3,tw1lv3);
+		playerLog.SetTxt(4,tw2lv1);
+		playerLog.SetTxt(5,tw2lv2);
+		playerLog.SetTxt(6,tw2lv3);
+		playerLog.SetTxt(7,tw3lv1);
+		playerLog.SetTxt(8,tw3lv2);
+		playerLog.SetTxt(9,tw3lv3);
+		playerLog.SetTxt(10,u1lv1);
+		playerLog.SetTxt(11,u1lv2);
+		playerLog.SetTxt(12,u1lv3);
+		playerLog.SetTxt(13,u2lv1);
+		playerLog.SetTxt(14,u2lv2);
+		playerLog.SetTxt(15,u2lv3);
 	}
 }
